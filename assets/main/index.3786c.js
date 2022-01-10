@@ -14,7 +14,7 @@ window.__require = function e(t, a, i) {
             var l = a[s] = {
                 exports: {}
             };
-            t[s][0].call(l.exports, function(e) {
+            t[s][0].call(l.exports, function (e) {
                 return o(t[s][1][e] || e)
             }, l, l.exports, e, t, a, i)
         }
@@ -24,51 +24,51 @@ window.__require = function e(t, a, i) {
     return o
 }({
     AniTools: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "c1ddcRY/mRHiYxChOjYdF2+", "AniTools");
             var a = {
-                doLabStrAni: function(e, t, a) {
+                doLabStrAni: function (e, t, a) {
                     e.node.stopAllActions(), e.string = "";
                     var i = t.split(""),
                         o = 0,
                         n = a / i.length;
-                    e.node.runAction(cc.sequence(cc.callFunc(function() {
+                    e.node.runAction(cc.sequence(cc.callFunc(function () {
                         e.string = e.string + i[o], o++
                     }), cc.delayTime(n)).repeat(i.length))
                 },
-                gunNumLabAni: function(e, t, a, i, o) {
+                gunNumLabAni: function (e, t, a, i, o) {
                     if (void 0 === a && (a = 30), o = o || parseInt(e.string), t != o) {
                         e.node.stopAllActions();
                         var n = 0,
                             s = Math.abs(t - o),
                             c = o > t ? -1 : 1;
-                        Math.abs(t - o) > a && (s = a, c *= Math.abs(t - o) / a), e.node.runAction(cc.sequence(cc.callFunc(function() {
+                        Math.abs(t - o) > a && (s = a, c *= Math.abs(t - o) / a), e.node.runAction(cc.sequence(cc.callFunc(function () {
                             n >= s - 1 ? e.string = i ? ToolsJs.getStrForNum2(t) : t : (o += Math.floor(c), e.string = i ? ToolsJs.getStrForNum2(o) : Math.floor(o)), n++
                         }), cc.delayTime(.02)).repeat(s))
                     }
                 },
-                openUIAni: function(e, t, a, i) {
+                openUIAni: function (e, t, a, i) {
                     void 0 === a && (a = .3), e.opacity = 0, t.scale = 0, e.runAction(cc.fadeTo(a, 100)), t.runAction(cc.sequence(cc.scaleTo(a, 1).easing(cc.easeBackOut()), cc.callFunc(i)))
                 },
-                closeUIAni: function(e, t, a, i) {
+                closeUIAni: function (e, t, a, i) {
                     void 0 === a && (a = .2), e.runAction(cc.fadeOut(a)), t.runAction(cc.sequence(cc.scaleTo(a, 0).easing(cc.easeBackIn()), cc.callFunc(i), cc.removeSelf(!0)))
                 },
-                sortFadeInArr: function(e, t, a) {
+                sortFadeInArr: function (e, t, a) {
                     void 0 === t && (t = .3), void 0 === a && (a = .02);
                     for (var i = 0; i < e.length; i++) {
                         var o = e[i];
                         o.opacity = 0, o.runAction(cc.sequence(cc.delayTime(a * i), cc.fadeIn(t)))
                     }
                 },
-                jumpByDegressAni: function(e, t, a, i, o, n) {
+                jumpByDegressAni: function (e, t, a, i, o, n) {
                     void 0 === a && (a = 0), void 0 === n && (n = 0);
                     var s = cc.misc.degreesToRadians(t),
                         c = cc.v2(Math.cos(s) * i, Math.sin(s) * i),
                         r = i / o;
                     e.runAction(cc.sequence(cc.delayTime(n), cc.jumpBy(r, cc.v2(1.5 * c.x, a), i, 1), cc.removeSelf(!0)))
                 },
-                moveDegressAni: function(e, t, a, i, o, n) {
+                moveDegressAni: function (e, t, a, i, o, n) {
                     t = t || this.returnRanNum(-180, 180);
                     var s = cc.misc.degreesToRadians(t),
                         c = cc.v2(Math.cos(s) * a, Math.sin(s) * a),
@@ -77,29 +77,29 @@ window.__require = function e(t, a, i) {
                         l = n ? 0 : e.opacity;
                     e.runAction(cc.sequence(cc.spawn(cc.scaleTo(r + .1, h), cc.moveBy(r, c).easing(cc.easeQuadraticActionOut()), cc.fadeTo(r + .1, l)), cc.fadeOut(.1), cc.removeSelf(!0)))
                 },
-                moveByOutInit: function(e, t, a, i) {
+                moveByOutInit: function (e, t, a, i) {
                     void 0 === t && (t = .5), void 0 === a && (a = 0), void 0 === i && (i = 0), e.x += a, e.y += i, e.runAction(cc.moveBy(t, cc.v2(-a, -i)).easing(cc.easeBackOut()))
                 },
-                sprRedAni: function(e, t, a, i) {
+                sprRedAni: function (e, t, a, i) {
                     var o = 0;
-                    e.runAction(cc.sequence(cc.delayTime(t), cc.callFunc(function(e) {
+                    e.runAction(cc.sequence(cc.delayTime(t), cc.callFunc(function (e) {
                         e.color = cc.Color.RED
-                    }), cc.delayTime(t), cc.callFunc(function(e) {
+                    }), cc.delayTime(t), cc.callFunc(function (e) {
                         e.color = cc.Color.WHITE, ++o >= a && null != i && i()
                     })).repeat(a))
                 },
-                shakeAni: function(e, t, a, i, o) {
+                shakeAni: function (e, t, a, i, o) {
                     void 0 === a && (a = 10), void 0 === i && (i = .1), void 0 === o && (o = 2);
                     var n = cc.sequence(cc.rotateBy(i, a), cc.rotateBy(i, -a), cc.rotateBy(i, -a), cc.rotateBy(i, a), cc.rotateBy(i, a), cc.rotateBy(i, -a), cc.delayTime(o));
                     t ? e.runAction(n.repeatForever()) : e.runAction(n)
                 },
-                playAni: function(e, t) {
+                playAni: function (e, t) {
                     e.getComponent(cc.Animation).play(t)
                 },
-                stopAni: function(e, t) {
+                stopAni: function (e, t) {
                     e.getComponent(cc.Animation).stop(t)
                 },
-                addNodeAni: function(e, t, a, i, o, n, s) {
+                addNodeAni: function (e, t, a, i, o, n, s) {
                     var c = e.getComponent(cc.Animation);
                     null == c && (c = e.addComponent(cc.Animation));
                     var r = [];
@@ -110,17 +110,17 @@ window.__require = function e(t, a, i) {
                         }
                         this.addClipForAnimaton(c, r, a, s, n)
                     } else
-                        for (var m = this, d = 0, u = o - i + 1, g = function(e) {
-                            cc.loader.loadRes(t + e, cc.SpriteFrame, function(t, i) {
+                        for (var m = this, d = 0, u = o - i + 1, g = function (e) {
+                            cc.loader.loadRes(t + e, cc.SpriteFrame, function (t, i) {
                                 i && (d++, i.index = e, r.push(i)), d >= u && (ToolsJs.sortArrForObject(r, "index"), m.addClipForAnimaton(c, r, a, s, n))
                             })
                         }, p = i; p <= o; p++) g(p)
                 },
-                addClipForAnimaton: function(e, t, a, i, o) {
+                addClipForAnimaton: function (e, t, a, i, o) {
                     var n = cc.AnimationClip.createWithSpriteFrames(t, t.length);
                     n.name = a, n.speed = i, n.wrapMode = o ? cc.WrapMode.Loop : cc.WrapMode.Normal, e.addClip(n)
                 },
-                returnRanNum: function(e, t) {
+                returnRanNum: function (e, t) {
                     return e + Math.floor(Math.random() * (t - e + 1))
                 }
             };
@@ -128,7 +128,7 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     EventData: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "00f19xAv/JGmKf/MZ/AWHni", "EventData"), window.EventData = {
                 UPDATE_GLOD: "updateGlod"
@@ -136,20 +136,20 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     EventManager: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "94634X4eDVNUoEnqKm3D5/S", "EventManager");
             var a = {
-                addListener: function(e, t, a) {
+                addListener: function (e, t, a) {
                     cc.systemEvent.on(e, t, a)
                 },
-                removeListener: function(e, t, a) {
+                removeListener: function (e, t, a) {
                     cc.systemEvent.off(e, t, a)
                 },
-                dispachEvent: function(e, t, a, i, o, n) {
+                dispachEvent: function (e, t, a, i, o, n) {
                     cc.systemEvent.emit(e, t, a, i, o, n)
                 },
-                removeListenerForTarget: function(e) {
+                removeListenerForTarget: function (e) {
                     cc.systemEvent.targetOff(e)
                 }
             };
@@ -157,7 +157,7 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     GameConfig: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "f0663sWtfNKCKOL+Hvnt0cI", "GameConfig");
             var a = {
@@ -188,10 +188,10 @@ window.__require = function e(t, a, i) {
                 noTouchBool: !0,
                 enterGameNum: 0,
                 enterGameFlags: !1,
-                returnRanNum: function(e, t) {
+                returnRanNum: function (e, t) {
                     return e + Math.floor(Math.random() * (t - e + 1))
                 },
-                getAngle: function(e, t, a, i) {
+                getAngle: function (e, t, a, i) {
                     var o = Math.abs(e - a),
                         n = Math.abs(t - i),
                         s = n / Math.sqrt(Math.pow(o, 2) + Math.pow(n, 2)),
@@ -199,10 +199,10 @@ window.__require = function e(t, a, i) {
                         r = 180 / (Math.PI / c);
                     return t > i && (r = 180 - r), e > a && (r *= -1), r
                 },
-                setLocalStorage: function(e, t) {
+                setLocalStorage: function (e, t) {
                     cc.sys.localStorage.setItem(e, t)
                 },
-                getLocalStorage: function(e) {
+                getLocalStorage: function (e) {
                     return cc.sys.localStorage.getItem(e)
                 }
             };
@@ -210,18 +210,18 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     GameUiTools: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "b21e8tF461OFalpptyeuAE2", "GameUiTools"), e("GameConfig");
             var a = {
-                newSprite: function(e, t) {
+                newSprite: function (e, t) {
                     var a = new cc.Node;
                     return t ? (e = e.split(".")[0], a.addComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame(e)) : a.addComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame("res/raw-assets/resources/" + e), a
                 },
-                setNodeSpriteFrame: function(e, t) {
+                setNodeSpriteFrame: function (e, t) {
                     e.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame(t)
                 },
-                setButtonClickEvents: function(e, t, a, i, o) {
+                setButtonClickEvents: function (e, t, a, i, o) {
                     var n = new Array;
                     null == t.length ? n[0] = t : n = t;
                     for (var s = 0; s < n.length; s++) {
@@ -231,21 +231,21 @@ window.__require = function e(t, a, i) {
                         r.clickEvents.push(c), (null == o || o) && (r.transition = cc.Button.Transition.SCALE, r.duration = .1, r.zoomScale = 1.2)
                     }
                 },
-                scheduleOnce: function(e, t, a) {
+                scheduleOnce: function (e, t, a) {
                     e.runAction(cc.sequence(cc.delayTime(a), cc.callFunc(t, e)))
                 },
-                loadingScene: function(e, t) {
-                    t ? cc.loader.loadRes("panel/LoadingLayer", function(t, a) {
+                loadingScene: function (e, t) {
+                    t ? cc.loader.loadRes("panel/LoadingLayer", function (t, a) {
                         var i = cc.instantiate(a);
-                        cc.director.getScene().children[0].addChild(i), cc.director.preloadScene(e, function() {
+                        cc.director.getScene().children[0].addChild(i), cc.director.preloadScene(e, function () {
                             cc.director.loadScene(e)
                         })
-                    }) : cc.director.preloadScene(e, function() {
+                    }) : cc.director.preloadScene(e, function () {
                         cc.director.loadScene(e)
                     })
                 },
-                loadingLayer: function(e) {
-                    cc.loader.loadRes(e, function(e, t) {
+                loadingLayer: function (e) {
+                    cc.loader.loadRes(e, function (e, t) {
                         if (!e) {
                             var a = cc.instantiate(t);
                             cc.director.getScene().children[0].addChild(a, 100)
@@ -259,7 +259,7 @@ window.__require = function e(t, a, i) {
         }
     ],
     HttpManagerJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             var a;
             cc._RF.push(t, "197e1hfNnxIcJx73V3VhUxY", "HttpManagerJs");
@@ -271,20 +271,20 @@ window.__require = function e(t, a, i) {
                     req: null,
                     perform: null,
                     retGameId: 0
-                }).cacheList = [], a.ctor = function() {}, a.checkHave = function() {
+                }).cacheList = [], a.ctor = function () { }, a.checkHave = function () {
                     this.isBusy || this.sendOne()
-                }, a.httpInitUrl = function(e) {
+                }, a.httpInitUrl = function (e) {
                     var t = window.location.href,
                         a = t.substring(0, t.lastIndexOf("//") + 2) + window.location.host + "/Service/Share/index";
                     this.URL = a, console.log("data", this.URL), this.retGameId = e
-                }, a.send = function(e, t, a, i) {
+                }, a.send = function (e, t, a, i) {
                     this.cacheList.push({
                         type: e,
                         data: t,
                         func: a,
                         target: i
                     }), this.isBusy || this.sendOne()
-                }, a.sendOne = function() {
+                }, a.sendOne = function () {
                     if (0 != this.cacheList.length) {
                         this.isBusy = !0, this.perform = this.cacheList.shift(), this.req = cc.loader.getXMLHttpRequest(), this.req.onreadystatechange = this.onDataHandler.bind(this), this.req.onerror = this.onErrorHandler.bind(this), this.req.ontimeout = this.onTimeoutHandler.bind(this), this.req.timeout = 2e3, cc.log("pos", this.URL), this.req.open("POST", this.URL), this.req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
                         var e = this.returnLanguage();
@@ -300,7 +300,7 @@ window.__require = function e(t, a, i) {
                             i = "send=" + JSON.stringify(a);
                         this.req.send(i)
                     }
-                }, a.onDataHandler = function() {
+                }, a.onDataHandler = function () {
                     if (404 != this.req.status) {
                         if (4 == this.req.readyState && this.req.status >= 200 && this.req.status <= 207 && this.req.responseText) {
                             var e = JSON.parse(this.req.responseText);
@@ -309,7 +309,7 @@ window.__require = function e(t, a, i) {
                     } else {
                         var t = i.launchScene,
                             a = i.Bros;
-                        i.caS, cc.director.loadScene(t, null, function() {
+                        i.caS, cc.director.loadScene(t, null, function () {
                             if (a) {
                                 var e = document.getElementById("GameDiv");
                                 e && (e.style.backgroundImage = "")
@@ -317,13 +317,13 @@ window.__require = function e(t, a, i) {
                             cc.loader.onProgress = null, console.log("Success to load scene: " + t)
                         })
                     }
-                }, a.returnLanguage = function() {
+                }, a.returnLanguage = function () {
                     return ("" + window.navigator.language).toLocaleLowerCase()
-                }, a.onErrorHandler = function() {
+                }, a.onErrorHandler = function () {
                     cc.log("网络错误"), this.isBusy = !1, this.perform.target ? this.perform.func.call(this.perform.target, -1) : this.perform.func(-1)
-                }, a.onTimeoutHandler = function() {
+                }, a.onTimeoutHandler = function () {
                     cc.log("请求超时"), this.isBusy = !1, this.perform.target ? this.perform.func.call(this.perform.target, -1) : this.perform.func(-1)
-                }, a.clearAll = function() {
+                }, a.clearAll = function () {
                     for (var e = this.cacheList.length, t = 0; t < e; t++) {
                         var a = this.cacheList[t];
                         a && (a.target ? a.func.call(a.target, -1) : a.func(-1))
@@ -336,7 +336,7 @@ window.__require = function e(t, a, i) {
         }
     ],
     LanguageSetJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "4754e8KuPZJCqklCNyKpG29", "LanguageSetJs"), t.exports = {
                 language_1: {
@@ -385,15 +385,15 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     LoadSceneJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "3ef908fwfNIwJsOjET8tCh2", "LoadSceneJs");
             var a = {
-                goToCover: function(e, t, a, i, o) {
+                goToCover: function (e, t, a, i, o) {
                     var n = e;
                     n = null == n || null == n || e, console.log("LoadBoolBeforeLoadS", n), this.needShow = !1, n && n ? (this.needShow = !0, showMyAds()) : this.needShow = !1, this.needShow ? (null == preloader && this.startGoToGame(a, i, o), resCompleteFlag = !0, adCompleteFlag && resCompleteFlag && this.startGoToGame(a, i, o)) : this.startGoToGame(a, i, o)
                 },
-                startGoToGame: function() {
+                startGoToGame: function () {
                     console.log("goToScene"), noAdGoToScene()
                 }
             };
@@ -401,7 +401,7 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     MainGameJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "0e7a8SkMLxEY7nCB1Bqi8WZ", "MainGameJS");
             var a = e("GameConfig"),
@@ -453,7 +453,7 @@ window.__require = function e(t, a, i) {
                         type: cc.AudioClip
                     }
                 },
-                judgeCurPlatform: function() {
+                judgeCurPlatform: function () {
                     console.log(navigator.userAgent);
                     var e, t, a, i, o, n, s, c = (e = navigator.userAgent, t = /(?:Windows Phone)/.test(e), a = /(?:SymbianOS)/.test(e) || t, i = /(?:Android)/.test(e), o = /(?:Firefox)/.test(e), /(?:Chrome|CriOS)/.test(e), {
                         isTablet: n = /(?:iPad|PlayBook)/.test(e) || i && !/(?:Mobile)/.test(e) || o && /(?:Tablet)/.test(e),
@@ -463,11 +463,11 @@ window.__require = function e(t, a, i) {
                     });
                     c.isAndroid || c.isPhone ? this.platFromNum = 1 : c.isTablet ? this.platFromNum = 2 : c.isPc && (this.platFromNum = 3)
                 },
-                adapterScreen: function() {
+                adapterScreen: function () {
                     var e = cc.find("Canvas").getComponent(cc.Canvas);
                     2 == this.platFromNum || 3 == this.platFromNum ? (e.fitWidth = !0, e.fitHeight = !0) : (e.fitWidth = !0, e.fitHeight = !1)
                 },
-                onLoad: function() {
+                onLoad: function () {
                     a.publicGameBool ? o.init() : finishLoad(), this.platFromNum = 1, this.judgeCurPlatform(), this.adapterScreen(), this.gameOveEndBool = !1, this.gameOverNum = 0, this.gameWidth = cc.winSize.width, this.gameHeight = cc.winSize.height, a.curType = this.returnCurrentLanType(), a.playNum >= 1 && (this.startBgNode.active = !1), a.playNum++, cc.log(a.playNum), this.addTouchEvents(), i.loadingLayer("panel/LinkIconSpr"), cc.director.getCollisionManager().enabled = !0, cc.director.getCollisionManager().enabledDebugDraw = !0, this.touchBeginFlags = !0, this.Hscale = 1280 / this.gameHeight, this.Wscale = 720 / this.gameWidth, this.SizeScale = 0, this.Hscale >= this.Wscale ? this.SizeScale = this.Wscale : this.SizeScale = this.Hscale, a.publicGameBool || this.play(), this.canCreateDisX = 0, this.canCreateDisY = 0, this.OffPos = null, this.speedNum = 400 / this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio, this.speed = this.speedNum, this.BGNum = 9, this.kedouArr = [], this.qingwaArr = [], this.haiguiArr = [], this.xiaojinyuArr = [], this.jinliArr = [], this.dianmanArr = [], this.shayuArr = [], this.jingyuArr = [], this.jiaoArr = [], this.longArr = [], this.tempArr = [], this.BGArr = [], this.fishScaleX = [], this.fishScaleY = [], this.myFish = null, this.lightFlags = !1, this.boolFlags = !1, this.gameOverFlags = !1, this.canMoveFlags = !0, this.firstFlags = !0, this.BGNode = cc.find("Canvas/bgLayer"), this.scale = .4 * this.SizeScale;
                     for (var e = 0; e < this.playerNode.children.length - 1; e++) this.changeSize(this.playerNode.children[e]);
                     this.playerNode.typeID = 1, this.createMap(), this.maxCameraMovePosX = Math.abs(this.BGArr[0][this.BGNum - 1].x) - this.gameWidth, this.maxCameraMovePosY = Math.abs(this.BGArr[0][this.BGNum - 1].y) - this.gameHeight / 2;
@@ -487,23 +487,23 @@ window.__require = function e(t, a, i) {
                     }
                     this.jingyuNum = 0, this.jiaoNum = 0, this.Wu = cc.find("Canvas/Wu"), this.light1 = cc.find("Canvas/light1"), this.light2 = cc.find("Canvas/light2"), this.Wu.width = this.gameWidth, this.Wu.height = this.gameHeight, this.stoneNode.zIndex = 50, this.Wu.setPosition(cc.v2(0, 0)), this.Wu.zIndex = 1e3, this.light1.zIndex = 1200, this.light2.zIndex = 1300, this.LightNumCount = 0, this.lightjudeTime = 0, this.playerNode.zIndex = 9999, this.leafNode.zIndex = 1e4
                 },
-                start: function() {},
-                play: function() {
+                start: function () { },
+                play: function () {
                     console.log(1);
                     var e = this;
                     adBreak({
                         type: "next",
                         name: "restart-game",
-                        beforeBreak: function() {
+                        beforeBreak: function () {
                             e.enableButtons()
                         },
-                        afterBreak: function() {
+                        afterBreak: function () {
                             e.enableButtons()
                         }
                     })
                 },
-                enableButtons: function() {},
-                returnCurrentLanType: function() {
+                enableButtons: function () { },
+                returnCurrentLanType: function () {
                     var e = 1;
                     switch (cc.sys.language) {
                         case cc.sys.LANGUAGE_CHINESE:
@@ -517,10 +517,10 @@ window.__require = function e(t, a, i) {
                     }
                     return e
                 },
-                changeSize: function(e) {
+                changeSize: function (e) {
                     e.scaleX = (e.scaleX - .1) * this.SizeScale, e.scaleY = (e.scaleY - .1) * this.SizeScale
                 },
-                CreateBG: function() {
+                CreateBG: function () {
                     for (var e = this.BGNum, t = 0; t < e; t++) {
                         for (var a = [], i = 0; i < e; i++) {
                             var o = cc.instantiate(this.BGPre);
@@ -538,7 +538,7 @@ window.__require = function e(t, a, i) {
                         this.BGArr.push(a)
                     }
                 },
-                getCreatePos: function(e, t) {
+                getCreatePos: function (e, t) {
                     void 0 === t && (t = 0);
                     var a = e.width,
                         i = e.height,
@@ -551,7 +551,7 @@ window.__require = function e(t, a, i) {
                         if (s.pDistance(r, this.leafNode.children[h].position) < 400) return this.getCreatePos(e, t);
                     return r
                 },
-                CreateLeaf: function(e, t) {
+                CreateLeaf: function (e, t) {
                     for (var a = 0; a < e; a++) {
                         var i = cc.instantiate(this.leafPre),
                             o = s.getRandomNum(1, 2, !0),
@@ -561,7 +561,7 @@ window.__require = function e(t, a, i) {
                         c ? i.setPosition(c) : i.destroy()
                     }
                 },
-                CreateBianJie: function() {
+                CreateBianJie: function () {
                     for (var e = 1; e < this.BGNum - 1; e++)
                         if (e == Math.floor(this.BGNum / 2)) {
                             var t = cc.instantiate(this.bianjiePre);
@@ -611,7 +611,7 @@ window.__require = function e(t, a, i) {
                         ToolsJs.setNodeParent(u, this.node), u.zIndex = 100
                     }
                 },
-                createMap: function() {
+                createMap: function () {
                     this.CreateBG(), this.CreateBianJie();
                     var e = cc.instantiate(this.enemyPreArr[0]);
                     this.enemyNode.addChild(e), this.changeSize(e), e.typeID = 1, e.speed = 100;
@@ -621,7 +621,7 @@ window.__require = function e(t, a, i) {
                         o = s.getCircumferencePos(t, a, i);
                     e.setPosition(o), this.enemyAction(e)
                 },
-                CameraMove: function(e) {
+                CameraMove: function (e) {
                     if (!this.gameOverFlags) {
                         var t = this.playerNode,
                             a = 0,
@@ -635,7 +635,7 @@ window.__require = function e(t, a, i) {
                         t.x += Math.floor(-Math.sin(s) * a * e), t.y += Math.floor(Math.cos(s) * i * e), t.x >= -this.maxCameraMovePosX + this.gameWidth / 4 && t.x <= this.maxCameraMovePosX - this.gameWidth / 4 && t.y >= -this.maxCameraMovePosY + this.gameHeight / 4 && t.y <= this.maxCameraMovePosY - this.gameHeight / 4 ? this.carmeraNode.setPosition(t.position) : t.x > -this.maxCameraMovePosX + this.gameWidth / 4 && t.x < this.maxCameraMovePosX - this.gameWidth / 4 && t.y < -this.maxCameraMovePosY + this.gameHeight / 4 ? this.carmeraNode.setPosition(cc.v2(t.x, -this.maxCameraMovePosY + this.gameHeight / 4)) : t.x > -this.maxCameraMovePosX + this.gameWidth / 4 && t.x < this.maxCameraMovePosX - this.gameWidth / 4 && t.y > this.maxCameraMovePosY - this.gameHeight / 4 ? this.carmeraNode.setPosition(cc.v2(t.x, this.maxCameraMovePosY - this.gameHeight / 4)) : t.y > -this.maxCameraMovePosY + this.gameHeight / 4 && t.y < this.maxCameraMovePosY - this.gameHeight / 4 && t.x > this.maxCameraMovePosX - this.gameWidth / 4 ? this.carmeraNode.setPosition(cc.v2(this.maxCameraMovePosX - this.gameWidth / 4, t.y)) : t.y > -this.maxCameraMovePosY + this.gameHeight / 4 && t.y < this.maxCameraMovePosY - this.gameHeight / 4 && t.x < -this.maxCameraMovePosX + this.gameWidth / 4 ? this.carmeraNode.setPosition(cc.v2(-this.maxCameraMovePosX + this.gameWidth / 4, t.y)) : t.y >= this.maxCameraMovePosY - this.gameHeight / 4 && t.x < -this.maxCameraMovePosY + this.gameWidth / 4 ? this.carmeraNode.setPosition(cc.v2(-this.maxCameraMovePosX + this.gameWidth / 4, this.maxCameraMovePosY - this.gameHeight / 4)) : t.y > this.maxCameraMovePosY - this.gameHeight / 4 && t.x > this.maxCameraMovePosY - this.gameWidth / 4 ? this.carmeraNode.setPosition(cc.v2(this.maxCameraMovePosX - this.gameWidth / 4, this.maxCameraMovePosY - this.gameHeight / 4)) : t.y < -this.maxCameraMovePosY + this.gameHeight / 4 && t.x > this.maxCameraMovePosY - this.gameWidth / 4 ? this.carmeraNode.setPosition(cc.v2(this.maxCameraMovePosX - this.gameWidth / 4, -this.maxCameraMovePosY + this.gameHeight / 4)) : t.y < -this.maxCameraMovePosY + this.gameHeight / 4 && t.x < -this.maxCameraMovePosY + this.gameWidth / 4 && this.carmeraNode.setPosition(cc.v2(-this.maxCameraMovePosX + this.gameWidth / 4, -this.maxCameraMovePosY + this.gameHeight / 4)), this.BubbleAction()
                     }
                 },
-                CameraChangeZoomRatio: function(e, t) {
+                CameraChangeZoomRatio: function (e, t) {
                     if (e != t) {
                         var a = this.carmeraNode.getChildByName("MoveCamera");
                         a.stopAllActions(), a.getComponent(cc.Camera).zoomRatio;
@@ -643,12 +643,12 @@ window.__require = function e(t, a, i) {
                         t - e > 0 && (i = !1);
                         var o = Math.abs(t - e),
                             n = Math.floor(o / .01);
-                        a.runAction(cc.sequence(cc.callFunc(function() {
+                        a.runAction(cc.sequence(cc.callFunc(function () {
                             a.getComponent(cc.Camera).zoomRatio != t && (i ? a.getComponent(cc.Camera).zoomRatio -= .01 : a.getComponent(cc.Camera).zoomRatio += .01)
                         }, this), cc.delayTime(.005)).repeat(n))
                     }
                 },
-                getEnemyPos: function(e, t) {
+                getEnemyPos: function (e, t) {
                     if (void 0 === t && (t = 0), !this.gameOverFlags) {
                         var a = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio,
                             i = this.enemyNode.convertToNodeSpaceAR(this.BGNode.convertToWorldSpaceAR(this.BGArr[0][this.BGNum - 1].position)),
@@ -676,12 +676,12 @@ window.__require = function e(t, a, i) {
                         return h
                     }
                 },
-                getEnemyID: function(e) {
+                getEnemyID: function (e) {
                     var t = s.getRandomNum(0, 100, !1),
                         a = 0;
                     return 1 == e ? a = t < 50 ? 0 : t > 50 && t < 75 ? 1 : 2 : 2 == e ? a = t < 20 ? 0 : t > 25 && t < 50 ? 1 : t > 50 && t < 70 ? 2 : 3 : 3 == e ? a = t < 20 ? 0 : t < 35 ? 1 : t < 40 ? 2 : t < 70 ? 3 : 4 : 4 == e ? a = t < 20 ? 1 : t < 35 ? 2 : t < 40 ? 3 : t > 40 && t < 70 ? 4 : 5 : 5 == e ? t <= 15 ? a = 2 : t <= 30 ? a = 3 : t <= 35 ? a = 4 : t <= 60 ? a = 5 : t <= 90 ? a = 6 : this.jingyuNum < 1 && (a = 7, this.jingyuNum++) : 6 == e ? t <= 15 ? a = 3 : t <= 30 ? a = 4 : t <= 35 ? a = 5 : t <= 65 ? a = 6 : t <= 90 ? this.jingyuNum < 3 ? (a = 7, this.jingyuNum++) : a = 6 : this.jiaoNum < 2 ? (a = 8, this.jiaoNum++) : a = this.jingyuNum < 3 ? 7 : 6 : 7 == e ? t <= 20 ? a = 3 : t <= 25 ? a = 4 : t <= 30 ? a = 5 : t <= 35 ? a = 6 : this.jingyuNum < 5 ? (a = 7, this.jingyuNum++) : this.jiaoNum < 5 ? (a = 8, this.jiaoNum++) : a = s.getRandomNum(3, 4, !0) : 8 == e ? t < 40 ? a = 3 : t < 45 ? a = 4 : t <= 50 ? a = 5 : t <= 55 ? a = 6 : random <= 60 ? this.jingyuNum < 3 && (a = 7, this.jingyuNum++) : this.jiaoNum < 3 ? (a = 8, this.jiaoNum++) : a = s.getRandomNum(4, 5, !0) : a = s.getRandomNum(3, 5, !0), e >= 4 && a == e - 1 ? this.getEnemyID(e) : a
                 },
-                CreateEnemy: function(e) {
+                CreateEnemy: function (e) {
                     for (var t = 0; t < e; t++) {
                         var a;
                         a = t <= .8 * e ? 0 : t > .8 * e && t <= .9 * e ? 1 : 2;
@@ -694,10 +694,10 @@ window.__require = function e(t, a, i) {
                     }
                     this.firstFlags = !1
                 },
-                updateCreate: function() {
+                updateCreate: function () {
                     this.gameOverFlags || this.CreateSingleEnemy(1, this.playerNode.typeID)
                 },
-                CreateSingleEnemy: function(e, t) {
+                CreateSingleEnemy: function (e, t) {
                     if (!this.gameOverFlags) {
                         var a = this.enemyNode.children.length,
                             i = this.playerNode.typeID;
@@ -719,13 +719,13 @@ window.__require = function e(t, a, i) {
                         }
                     }
                 },
-                judgeEnemyPos: function(e) {
+                judgeEnemyPos: function (e) {
                     var t = this.enemyNode.convertToNodeSpaceAR(this.BGNode.convertToWorldSpaceAR(this.BGArr[0][0].position)),
                         a = Math.abs(t.x),
                         i = Math.abs(t.y);
                     e.x > a - this.gameHeight || e.y > i - this.gameHeight || e.x < -a + this.gameHeight || e.y < -i + this.gameHeight ? this.EnemyReturnAction(e) : this.enemyAction(e)
                 },
-                enemyAction: function(e) {
+                enemyAction: function (e) {
                     e.stopAllActions();
                     var t = s.getRandomNum(500, 1e3, !0),
                         a = e.position,
@@ -737,22 +737,22 @@ window.__require = function e(t, a, i) {
                         h = cc.misc.radiansToDegrees(r) - 90,
                         l = e.speed,
                         m = s.pDistance(a, c) / l;
-                    e.runAction(cc.sequence(cc.spawn(cc.moveTo(m, c), cc.rotateTo(.3, h)), cc.callFunc(function() {
+                    e.runAction(cc.sequence(cc.spawn(cc.moveTo(m, c), cc.rotateTo(.3, h)), cc.callFunc(function () {
                         this.judgeEnemyPos(e)
                     }, this)))
                 },
-                EnemyReturnAction: function(e) {
+                EnemyReturnAction: function (e) {
                     e.stopAllActions();
                     var t = e.speed,
                         a = s.getRandomNum(1e3, 1300, !1),
                         i = a / t,
                         o = Math.atan2(-e.y, -e.x),
                         n = cc.misc.radiansToDegrees(o) - 90;
-                    e.runAction(cc.sequence(cc.spawn(cc.moveBy(i, a * Math.cos(o), a * Math.sin(o)), cc.rotateTo(.3, n)), cc.callFunc(function() {
+                    e.runAction(cc.sequence(cc.spawn(cc.moveBy(i, a * Math.cos(o), a * Math.sin(o)), cc.rotateTo(.3, n)), cc.callFunc(function () {
                         this.judgeEnemyPos(e)
                     }, this)))
                 },
-                ChasePlayer: function(e) {
+                ChasePlayer: function (e) {
                     e.stopAllActions();
                     var t = e.position,
                         a = this.playerNode.position,
@@ -762,11 +762,11 @@ window.__require = function e(t, a, i) {
                         c = s.getRandomNum(100 / n, 200 / n, !1),
                         r = c / o,
                         h = cc.misc.radiansToDegrees(i) - 90;
-                    e.runAction(cc.sequence(cc.spawn(cc.moveBy(r, c * Math.cos(i), c * Math.sin(i)), cc.rotateTo(2 * r / 3, h)), cc.callFunc(function() {
+                    e.runAction(cc.sequence(cc.spawn(cc.moveBy(r, c * Math.cos(i), c * Math.sin(i)), cc.rotateTo(2 * r / 3, h)), cc.callFunc(function () {
                         this.ChasePlayer(e)
                     }, this)))
                 },
-                EscapePlayer: function(e) {
+                EscapePlayer: function (e) {
                     e.stopAllActions();
                     var t = e.position,
                         a = this.playerNode.position,
@@ -775,42 +775,45 @@ window.__require = function e(t, a, i) {
                         n = s.getRandomNum(100, 200, !1),
                         c = n / o,
                         r = cc.misc.radiansToDegrees(i) - 90;
-                    e.runAction(cc.sequence(cc.spawn(cc.moveBy(c, n * Math.cos(i), n * Math.sin(i)), cc.rotateTo(.3, r)), cc.callFunc(function() {
+                    e.runAction(cc.sequence(cc.spawn(cc.moveBy(c, n * Math.cos(i), n * Math.sin(i)), cc.rotateTo(.3, r)), cc.callFunc(function () {
                         this.enemyAction(e)
                     }, this)))
                 },
-                judgeIsChange: function(e) {
+                judgeIsChange: function (e) {
                     var t = this;
                     if (this.tempArr.length >= 2)
                         if (this.playerNode.typeID <= e) {
                             this.playerNode.typeID++, this.playerNode.typeID > this.maxTypeID && (this.maxTypeID = this.playerNode.typeID);
-                            for (var a = this.playerNode.getChildByName("son").convertToNodeSpaceAR(this.playerNode.convertToWorldSpaceAR(this.myFish.position)), i = function(e) {
+                            for (var a = this.playerNode.getChildByName("son").convertToNodeSpaceAR(this.playerNode.convertToWorldSpaceAR(this.myFish.position)), i = function (e) {
                                 var i = t.tempArr[e].position,
                                     o = s.pDistance(a, i) / 2e3;
-                                t.tempArr[e].runAction(cc.sequence(cc.spawn(cc.moveTo(o, a).easing(cc.easeQuadraticActionOut()), cc.scaleTo(o, 0, 0), cc.callFunc(function() {
+                                t.tempArr[e].runAction(cc.sequence(cc.spawn(cc.moveTo(o, a).easing(cc.easeQuadraticActionOut()), cc.scaleTo(o, 0, 0), cc.callFunc(function () {
                                     if (e == this.tempArr.length - 1) {
                                         for (var t = 0; t < this.tempArr.length; t++) this.tempArr[t].destroy();
                                         this.tempArr.splice(0, this.tempArr.length), this.createLizi(this.myFish, !0), this.ChangeBig()
                                     }
-                                }, t)), cc.callFunc(function() {}, t)))
+                                }, t)), cc.callFunc(function () { }, t)))
                             }, o = 0; o < this.tempArr.length; o++) i(o)
                         } else this.playerNode.typeID > e && this.tempArr.length >= 3 && this.EatSmallAction2()
                 },
-                judgePushArr: function(e, t) {
+                judgePushArr: function (e, t) {
                     1 == e ? (this.kedouArr.push(t), this.tempArr = this.kedouArr, this.judgeIsChange(e)) : 2 == e ? (this.qingwaArr.push(t), this.tempArr = this.qingwaArr, this.judgeIsChange(e)) : 3 == e ? (this.haiguiArr.push(t), this.tempArr = this.haiguiArr, this.judgeIsChange(e)) : 4 == e ? (this.xiaojinyuArr.push(t), this.tempArr = this.xiaojinyuArr, this.judgeIsChange(e)) : 5 == e ? (this.jinliArr.push(t), this.tempArr = this.jinliArr, this.judgeIsChange(e)) : 6 == e ? (this.dianmanArr.push(t), this.tempArr = this.dianmanArr, this.judgeIsChange(e)) : 7 == e ? (this.shayuArr.push(t), this.tempArr = this.shayuArr, this.judgeIsChange(e)) : 8 == e ? (this.jingyuArr.push(t), this.tempArr = this.jingyuArr, this.judgeIsChange(e)) : 9 == e ? (this.jiaoArr.push(t), this.tempArr = this.jiaoArr, this.judgeIsChange(e)) : 10 == e && (this.longArr.push(t), this.tempArr = this.longArr, this.judgeIsChange(e))
                 },
-                ChangeBig: function() {
+                ChangeBig: function () {
                     if (!this.gameOverFlags) {
                         var e = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio;
                         this.speedNum += this.addSpeed / e;
                         var t = this.playerNode.typeID;
-                        this.removeSmallFish222(), 2 == t ? (this.playerNode.getChildByName("kedou").active = !1, this.playerNode.getChildByName("qingwa").scaleX = 0, this.playerNode.getChildByName("qingwa").scaleY = 0, this.playerNode.getChildByName("qingwa").active = !0, this.myFish = this.playerNode.getChildByName("qingwa")) : 3 == t ? (this.playerNode.getChildByName("qingwa").active = !1, this.playerNode.getChildByName("haigui").scaleX = 0, this.playerNode.getChildByName("haigui").scaleY = 0, this.playerNode.getChildByName("haigui").active = !0, this.CameraChangeZoomRatio(e, .75), this.myFish = this.playerNode.getChildByName("haigui")) : 4 == t ? (this.playerNode.getChildByName("haigui").active = !1, this.playerNode.getChildByName("xiaojinyu").scaleX = 0, this.playerNode.getChildByName("xiaojinyu").scaleY = 0, this.playerNode.getChildByName("xiaojinyu").active = !0, this.myFish = this.playerNode.getChildByName("xiaojinyu"), this.CameraChangeZoomRatio(e, .65)) : 5 == t ? (this.playerNode.getChildByName("xiaojinyu").active = !1, this.playerNode.getChildByName("jinli").scaleX = 0, this.playerNode.getChildByName("jinli").scaleY = 0, this.playerNode.getChildByName("jinli").active = !0, this.CameraChangeZoomRatio(e, .55), this.myFish = this.playerNode.getChildByName("jinli")) : 6 == t ? (this.playerNode.getChildByName("jinli").active = !1, this.playerNode.getChildByName("dianman").scaleX = 0, this.playerNode.getChildByName("dianman").scaleY = 0, this.playerNode.getChildByName("dianman").active = !0, this.myFish = this.playerNode.getChildByName("dianman"), this.CameraChangeZoomRatio(e, .45)) : 7 == t ? (this.playerNode.getChildByName("dianman").active = !1, this.playerNode.getChildByName("shayu").scaleX = 0, this.playerNode.getChildByName("shayu").scaleY = 0, this.playerNode.getChildByName("shayu").active = !0, this.CameraChangeZoomRatio(e, .4), this.myFish = this.playerNode.getChildByName("shayu")) : 8 == t ? (this.playerNode.getChildByName("shayu").active = !1, this.playerNode.getChildByName("jingyu").scaleX = 0, this.playerNode.getChildByName("jingyu").scaleY = 0, this.playerNode.getChildByName("jingyu").active = !0, this.CameraChangeZoomRatio(e, .3), this.myFish = this.playerNode.getChildByName("jingyu")) : 9 == t ? (this.playerNode.getChildByName("jingyu").active = !1, this.playerNode.getChildByName("jiao").scaleX = 0, this.playerNode.getChildByName("jiao").scaleY = 0, this.playerNode.getChildByName("jiao").active = !0, this.CameraChangeZoomRatio(e, .25), this.myFish = this.playerNode.getChildByName("jiao")) : 10 == t && (this.playerNode.getChildByName("jiao").active = !1, this.SummonDragonAction()), t < 10 && this.myFish.runAction(cc.sequence(cc.scaleTo(.1, this.fishScaleX[t - 1], this.fishScaleY[t - 1]).easing(cc.easeBackOut()), cc.callFunc(function() {}, this)))
+                        this.removeSmallFish222(),
+                            2 == t ? (this.playerNode.getChildByName("kedou").active = !1,
+                                this.playerNode.getChildByName("long").scaleX = 0, this.playerNode.getChildByName("long").scaleY = 0, this.playerNode.getChildByName("long").active = !0, this.myFish = this.playerNode.getChildByName("long")) : 3 == t ? (this.playerNode.getChildByName("long").active = !1,
+                                    this.playerNode.getChildByName("haigui").scaleX = 0, this.playerNode.getChildByName("haigui").scaleY = 0, this.playerNode.getChildByName("haigui").active = !0, this.CameraChangeZoomRatio(e, .75), this.myFish = this.playerNode.getChildByName("haigui")) : 4 == t ? (this.playerNode.getChildByName("haigui").active = !1, this.playerNode.getChildByName("xiaojinyu").scaleX = 0, this.playerNode.getChildByName("xiaojinyu").scaleY = 0, this.playerNode.getChildByName("xiaojinyu").active = !0, this.myFish = this.playerNode.getChildByName("xiaojinyu"), this.CameraChangeZoomRatio(e, .65)) : 5 == t ? (this.playerNode.getChildByName("xiaojinyu").active = !1, this.playerNode.getChildByName("jinli").scaleX = 0, this.playerNode.getChildByName("jinli").scaleY = 0, this.playerNode.getChildByName("jinli").active = !0, this.CameraChangeZoomRatio(e, .55), this.myFish = this.playerNode.getChildByName("jinli")) : 6 == t ? (this.playerNode.getChildByName("jinli").active = !1, this.playerNode.getChildByName("dianman").scaleX = 0, this.playerNode.getChildByName("dianman").scaleY = 0, this.playerNode.getChildByName("dianman").active = !0, this.myFish = this.playerNode.getChildByName("dianman"), this.CameraChangeZoomRatio(e, .45)) : 7 == t ? (this.playerNode.getChildByName("dianman").active = !1, this.playerNode.getChildByName("shayu").scaleX = 0, this.playerNode.getChildByName("shayu").scaleY = 0, this.playerNode.getChildByName("shayu").active = !0, this.CameraChangeZoomRatio(e, .4), this.myFish = this.playerNode.getChildByName("shayu")) : 8 == t ? (this.playerNode.getChildByName("shayu").active = !1, this.playerNode.getChildByName("jingyu").scaleX = 0, this.playerNode.getChildByName("jingyu").scaleY = 0, this.playerNode.getChildByName("jingyu").active = !0, this.CameraChangeZoomRatio(e, .3), this.myFish = this.playerNode.getChildByName("jingyu")) : 9 == t ? (this.playerNode.getChildByName("jingyu").active = !1, this.playerNode.getChildByName("jiao").scaleX = 0, this.playerNode.getChildByName("jiao").scaleY = 0, this.playerNode.getChildByName("jiao").active = !0, this.CameraChangeZoomRatio(e, .25), this.myFish = this.playerNode.getChildByName("jiao")) : 10 == t && (this.playerNode.getChildByName("jiao").active = !1, this.SummonDragonAction()), t < 10 && this.myFish.runAction(cc.sequence(cc.scaleTo(.1, this.fishScaleX[t - 1], this.fishScaleY[t - 1]).easing(cc.easeBackOut()), cc.callFunc(function () { }, this)))
                     }
                 },
-                EatSmallAction2: function() {
+                EatSmallAction2: function () {
                     var e = this;
                     if (this.tempArr.length >= 3) {
-                        var t = function() {
+                        var t = function () {
                             var t = e.tempArr[0].typeID;
                             if (9 == t) return {
                                 v: void 0
@@ -822,22 +825,22 @@ window.__require = function e(t, a, i) {
                                 n = e.playerNode.getChildByName("son"),
                                 c = e.getSmallFishPos(a, e.myFish);
                             a.scaleX = 0, a.scaleY = 0, n.addChild(a, 100), a.setPosition(c);
-                            for (var r = function(n) {
+                            for (var r = function (n) {
                                 var r = s.pDistance(c, e.tempArr[n].position) / 2e3;
-                                e.tempArr[n].runAction(cc.sequence(cc.spawn(cc.moveTo(r, c).easing(cc.easeQuadraticActionOut()), cc.callFunc(function() {
+                                e.tempArr[n].runAction(cc.sequence(cc.spawn(cc.moveTo(r, c).easing(cc.easeQuadraticActionOut()), cc.callFunc(function () {
                                     if (n == this.tempArr.length - 1) {
                                         for (var e = 0; e < this.tempArr.length; e++) this.tempArr[e].destroy();
-                                        this.tempArr.splice(0, this.tempArr.length), this.createLizi(a, !1), a.runAction(cc.sequence(cc.scaleTo(.1, i, o).easing(cc.easeQuarticActionOut()), cc.callFunc(function() {
+                                        this.tempArr.splice(0, this.tempArr.length), this.createLizi(a, !1), a.runAction(cc.sequence(cc.scaleTo(.1, i, o).easing(cc.easeQuarticActionOut()), cc.callFunc(function () {
                                             a.zIndex = 50 * (10 - t - 1), this.judgePushArr(a.typeID, a)
                                         }, this)))
                                     }
-                                }, e)), cc.callFunc(function() {}, e)))
+                                }, e)), cc.callFunc(function () { }, e)))
                             }, h = 0; h < e.tempArr.length; h++) r(h)
                         }();
                         if ("object" == typeof t) return t.v
                     }
                 },
-                getSmallFishPos: function(e, t, a) {
+                getSmallFishPos: function (e, t, a) {
                     void 0 === a && (a = 0), a++;
                     var i, o = cc.v2(),
                         n = this.playerNode.getChildByName("son"),
@@ -855,7 +858,7 @@ window.__require = function e(t, a, i) {
                         if (s.pDistance(o, n.children[u].position) < e.width / 2 * e.scaleX) return this.getSmallFishPos(e, t, a);
                     return o
                 },
-                EatSmallAction: function(e, t) {
+                EatSmallAction: function (e, t) {
                     if (!this.gameOverFlags) {
                         var a = e.typeID;
                         8 == e.type && this.jingyuNum--, 9 == e.type && this.jiaoNum--;
@@ -865,15 +868,15 @@ window.__require = function e(t, a, i) {
                         o.typeID = a, this.changeSize(o);
                         var n = o.scaleX,
                             s = o.scaleY;
-                        this.playerNode.getChildByName("son").addChild(o, 100), o.setPosition(i), o.scaleX = 0, o.scaleY = 0, o.runAction(cc.sequence(cc.spawn(cc.scaleTo(.1, n, s).easing(cc.easeQuadraticActionOut()), cc.callFunc(function() {
+                        this.playerNode.getChildByName("son").addChild(o, 100), o.setPosition(i), o.scaleX = 0, o.scaleY = 0, o.runAction(cc.sequence(cc.spawn(cc.scaleTo(.1, n, s).easing(cc.easeQuadraticActionOut()), cc.callFunc(function () {
                             o.zIndex = 50 * (10 - a), this.judgePushArr(a, o)
-                        }, this)), cc.callFunc(function() {}, this))), this.CreateSingleEnemy(1, this.playerNode.typeID)
+                        }, this)), cc.callFunc(function () { }, this))), this.CreateSingleEnemy(1, this.playerNode.typeID)
                     }
                 },
-                JudgeSmallFish: function() {
+                JudgeSmallFish: function () {
                     this.myFish.active = !1, this.playerNode.getChildByName("son").children.length > 0 ? (cc.audioEngine.play(this.HurtMusic, !1, 1), this.chooseBiggerFish()) : this.DieAction()
                 },
-                chooseBiggerFish: function() {
+                chooseBiggerFish: function () {
                     if (!this.gameOverFlags) {
                         var e = cc.instantiate(this.bloodPre);
                         this.liziNode.addChild(e, 1e3);
@@ -882,21 +885,24 @@ window.__require = function e(t, a, i) {
                         var a = 100 + 25 * t;
                         e.width = a, e.height = a;
                         var i = this.liziNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(this.playerNode.position));
-                        e.scaleX = 0, e.scaleY = 0, e.setPosition(i), e.runAction(cc.sequence(cc.scaleTo(.5, 1.3, 1.3).easing(cc.easeSineOut()), cc.fadeOut(.3), cc.callFunc(function() {}, this), cc.removeSelf()));
+                        e.scaleX = 0, e.scaleY = 0, e.setPosition(i), e.runAction(cc.sequence(cc.scaleTo(.5, 1.3, 1.3).easing(cc.easeSineOut()), cc.fadeOut(.3), cc.callFunc(function () { }, this), cc.removeSelf()));
                         for (var o = this.playerNode.getChildByName("son"), n = this.myFish.angle, c = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio, r = o.children[0].typeID, h = this.playerNode.typeID, l = 0, m = 0; m < o.children.length; m++) o.children[m].typeID > r && (r = o.children[m].typeID, l = m);
                         var d = this.node.convertToNodeSpaceAR(o.convertToWorldSpaceAR(o.children[l].position));
                         d.x < -this.maxCameraMovePosX ? d.x = -this.maxCameraMovePosX : d.x > this.maxCameraMovePosX && (d.x = this.maxCameraMovePosX), d.y > this.maxCameraMovePosY ? d.y = this.maxCameraMovePosY : d.y < -this.maxCameraMovePosY && (d.y = this.maxCameraMovePosY);
                         var u = this.playerNode.position,
                             g = s.pDistance(d, u) / 1e3;
-                        this.playerNode.stopAllActions(), this.playerNode.runAction(cc.sequence(cc.spawn(cc.moveTo(g, d), cc.callFunc(function() {
+                        this.playerNode.stopAllActions(), this.playerNode.runAction(cc.sequence(cc.spawn(cc.moveTo(g, d), cc.callFunc(function () {
                             var e = this;
-                            1 == r ? (ToolsJs.removeNodeForArr(this.kedouArr, o.children[l]), this.tempArr = this.kedouArr, this.myFish = this.playerNode.getChildByName("kedou"), Math.abs(c - 1) > .05 && this.CameraChangeZoomRatio(c, 1)) : 2 == r ? (ToolsJs.removeNodeForArr(this.qingwaArr, o.children[l]), this.tempArr = this.qingwaArr, this.myFish = this.playerNode.getChildByName("qingwa"), Math.abs(c - 1) > .05 && this.CameraChangeZoomRatio(c, 1)) : 3 == r ? (ToolsJs.removeNodeForArr(this.haiguiArr, o.children[l]), this.tempArr = this.haiguiArr, this.myFish = this.playerNode.getChildByName("haigui"), Math.abs(c - .75) > .05 && this.CameraChangeZoomRatio(c, .75)) : 4 == r ? (ToolsJs.removeNodeForArr(this.xiaojinyuArr, o.children[l]), this.tempArr = this.xiaojinyuArr, this.myFish = this.playerNode.getChildByName("xiaojinyu"), Math.abs(c - .65) > .05 && this.CameraChangeZoomRatio(c, .65)) : 5 == r ? (ToolsJs.removeNodeForArr(this.jinliArr, o.children[l]), this.tempArr = this.jinliArr, this.myFish = this.playerNode.getChildByName("jinli"), Math.abs(c - .55) > .05 && this.CameraChangeZoomRatio(c, .55)) : 6 == r ? (ToolsJs.removeNodeForArr(this.dianmanArr, o.children[l]), this.tempArr = this.dianmanArr, this.myFish = this.playerNode.getChildByName("dianman"), Math.abs(c - .45) > .05 && this.CameraChangeZoomRatio(c, .45)) : 7 == r ? (ToolsJs.removeNodeForArr(this.shayuArr, o.children[l]), this.tempArr = this.shayuArr, this.myFish = this.playerNode.getChildByName("shayu"), Math.abs(c - .4) > .05 && this.CameraChangeZoomRatio(c, .4)) : 8 == r && (ToolsJs.removeNodeForArr(this.jingyuArr, o.children[l]), this.tempArr = this.shayuArr, this.myFish = this.playerNode.getChildByName("jingyu"), Math.abs(c - .3) > .05 && this.CameraChangeZoomRatio(c, .3)), this.playerNode.typeID = r, o.removeChild(o.children[l]), this.myFish.active = !0, this.myFish.scaleX = this.fishScaleX[r - 1], this.myFish.scaleY = this.fishScaleY[r - 1], this.speedNum += (this.playerNode.typeID - h) * this.addSpeed / 2 / c, this.myFish.angle = n, this.scheduleOnce(function() {
-                                e.gameOverFlags
-                            }, .1)
-                        }, this)), cc.callFunc(function() {}, this)))
+                            1 == r ? (ToolsJs.removeNodeForArr(this.kedouArr, o.children[l]), this.tempArr = this.kedouArr, this.myFish = this.playerNode.getChildByName("kedou"),
+                                Math.abs(c - 1) > .05 && this.CameraChangeZoomRatio(c, 1)) : 2 == r ? (ToolsJs.removeNodeForArr(this.qingwaArr, o.children[l]), this.tempArr = this.qingwaArr, this.myFish = this.playerNode.getChildByName("long"),
+                                    Math.abs(c - 1) > .05 && this.CameraChangeZoomRatio(c, 1)) : 3 == r ? (ToolsJs.removeNodeForArr(this.haiguiArr, o.children[l]), this.tempArr = this.haiguiArr, this.myFish = this.playerNode.getChildByName("haigui"),
+                                        Math.abs(c - .75) > .05 && this.CameraChangeZoomRatio(c, .75)) : 4 == r ? (ToolsJs.removeNodeForArr(this.xiaojinyuArr, o.children[l]), this.tempArr = this.xiaojinyuArr, this.myFish = this.playerNode.getChildByName("xiaojinyu"), Math.abs(c - .65) > .05 && this.CameraChangeZoomRatio(c, .65)) : 5 == r ? (ToolsJs.removeNodeForArr(this.jinliArr, o.children[l]), this.tempArr = this.jinliArr, this.myFish = this.playerNode.getChildByName("jinli"), Math.abs(c - .55) > .05 && this.CameraChangeZoomRatio(c, .55)) : 6 == r ? (ToolsJs.removeNodeForArr(this.dianmanArr, o.children[l]), this.tempArr = this.dianmanArr, this.myFish = this.playerNode.getChildByName("dianman"), Math.abs(c - .45) > .05 && this.CameraChangeZoomRatio(c, .45)) : 7 == r ? (ToolsJs.removeNodeForArr(this.shayuArr, o.children[l]), this.tempArr = this.shayuArr, this.myFish = this.playerNode.getChildByName("shayu"), Math.abs(c - .4) > .05 && this.CameraChangeZoomRatio(c, .4)) : 8 == r && (ToolsJs.removeNodeForArr(this.jingyuArr, o.children[l]), this.tempArr = this.shayuArr, this.myFish = this.playerNode.getChildByName("jingyu"), Math.abs(c - .3) > .05 && this.CameraChangeZoomRatio(c, .3)), this.playerNode.typeID = r, o.removeChild(o.children[l]), this.myFish.active = !0, this.myFish.scaleX = this.fishScaleX[r - 1], this.myFish.scaleY = this.fishScaleY[r - 1], this.speedNum += (this.playerNode.typeID - h) * this.addSpeed / 2 / c, this.myFish.angle = n, this.scheduleOnce(function () {
+                                            e.gameOverFlags
+                                        }, .1)
+                        }, this)), cc.callFunc(function () { }, this)))
                     }
                 },
-                createSmallFish: function(e) {
+                createSmallFish: function (e) {
                     var t;
                     t = e < 8 ? s.getRandomNum(0, e - 1, !0) : s.getRandomNum(1, 7, !0);
                     var a = cc.instantiate(this.enemyPreArr[t]);
@@ -906,13 +912,13 @@ window.__require = function e(t, a, i) {
                     var o = this.getEnemyPos(a);
                     o ? (this.enemyNode.addChild(a, 1), a.setPosition(o), a.getComponent("enemyJS").active = !0, this.enemyAction(a)) : a.destroy()
                 },
-                removeSomeBigFish222: function() {
+                removeSomeBigFish222: function () {
                     var e = this;
                     if (!(this.gameOverFlags || this.playerNode.typeID <= 2)) {
                         for (var t = this.enemyNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(this.playerNode.position)), a = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio, i = [], o = 0; o < this.enemyNode.children.length; o++) this.enemyNode.children[o].typeID >= this.playerNode.typeID + 3 && i.push(this.enemyNode.children[o]);
-                        for (var n = function(o) {
+                        for (var n = function (o) {
                             var n = i[o];
-                            n.runAction(cc.sequence(cc.delayTime(.05 * o), cc.callFunc(function(e) {
+                            n.runAction(cc.sequence(cc.delayTime(.05 * o), cc.callFunc(function (e) {
                                 if (s.pDistance(t, e.position) > (this.gameHeight + n.height / 2) / a && Math.random() < .7) {
                                     if (this.gameOverFlags) return;
                                     this.enemyNode.removeChild(n), this.createSmallFish(this.playerNode.typeID)
@@ -921,14 +927,14 @@ window.__require = function e(t, a, i) {
                         }, c = 0; c < i.length; c++) n(c)
                     }
                 },
-                removeSomeBigFish: function() {
+                removeSomeBigFish: function () {
                     if (!this.gameOverFlags) {
                         for (var e = this.enemyNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(this.playerNode.position)), t = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio, a = [], i = 0; i < this.enemyNode.children.length; i++) this.enemyNode.children[i].typeID >= this.playerNode.typeID + 3 && a.push(this.enemyNode.children[i]);
                         for (var o = 0; o < a.length; o++)
                             if (s.pDistance(e, a[o].position) > (this.gameHeight / 2 + a[o].height / 2) / t) return 8 == a[o].typeID && this.jingyuNum--, 9 == a[o].typeID && this.jiaoNum--, void this.enemyNode.removeChild(a[o])
                     }
                 },
-                removeSmallFish222: function() {
+                removeSmallFish222: function () {
                     var e = this;
                     if (!this.gameOverFlags) {
                         var t = this.enemyNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(this.playerNode.position)),
@@ -937,9 +943,9 @@ window.__require = function e(t, a, i) {
                         if (!(this.playerNode.typeID >= 5)) {
                             for (var o = 0; o < this.enemyNode.children.length; o++) this.enemyNode.children[o].typeID <= this.playerNode.typeID - 3 && i.push(this.enemyNode.children[o]);
                             if (i.length > 0)
-                                for (var n = function(o) {
+                                for (var n = function (o) {
                                     var n = i[o];
-                                    n.runAction(cc.sequence(cc.delayTime(.05 * o), cc.callFunc(function(e) {
+                                    n.runAction(cc.sequence(cc.delayTime(.05 * o), cc.callFunc(function (e) {
                                         if (s.pDistance(t, e.position) > (this.gameHeight + n.height / 2) / a && Math.random() < .5) {
                                             if (this.gameOverFlags) return;
                                             this.enemyNode.removeChild(n), this.CreateSingleEnemy(1, this.playerNode.typeID)
@@ -949,7 +955,7 @@ window.__require = function e(t, a, i) {
                         }
                     }
                 },
-                removeSmallFish: function() {
+                removeSmallFish: function () {
                     if (!this.gameOverFlags) {
                         for (var e = this.enemyNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(this.playerNode.position)), t = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio, a = [], i = 0; i < this.enemyNode.children.length; i++) {
                             var o = this.enemyNode.children[i].typeID;
@@ -960,7 +966,7 @@ window.__require = function e(t, a, i) {
                                 if (s.pDistance(e, a[n].position) > (this.gameHeight / 2 + a[n].height / 2) / t) return Math.random(), this.enemyNode.removeChild(a[n]), void this.CreateSingleEnemy(1, this.playerNode.typeID)
                     }
                 },
-                createLizi: function(e, t) {
+                createLizi: function (e, t) {
                     var a = cc.v2(),
                         i = 0,
                         o = 0;
@@ -976,7 +982,7 @@ window.__require = function e(t, a, i) {
                             g = 360 * Math.random(),
                             p = s.getCircumferencePos(a, l, g),
                             f = s.pDistance(a, p) / s.getRandomNum(300, 500, !0);
-                        s.getRandomNum(30, 180, !0), m.runAction(cc.sequence(cc.delayTime(r), cc.spawn(cc.moveTo(f, p).easing(cc.easeQuarticActionOut()), cc.scaleTo(f, u, u)), cc.fadeOut(.5), cc.callFunc(function() {}, this), cc.removeSelf()))
+                        s.getRandomNum(30, 180, !0), m.runAction(cc.sequence(cc.delayTime(r), cc.spawn(cc.moveTo(f, p).easing(cc.easeQuarticActionOut()), cc.scaleTo(f, u, u)), cc.fadeOut(.5), cc.callFunc(function () { }, this), cc.removeSelf()))
                     }
                     for (var y = s.getRandomNum(10, 20, !0), v = 0; v < y; v++) {
                         var N;
@@ -991,16 +997,16 @@ window.__require = function e(t, a, i) {
                             M = s.getCircumferencePos(a, N, x),
                             P = s.pDistance(a, M) / s.getRandomNum(300, 500, !0),
                             F = s.getRandomNum(180, 360, !0);
-                        S.runAction(cc.sequence(cc.delayTime(r), cc.spawn(cc.moveTo(P, M).easing(cc.easeQuarticActionOut()), cc.scaleTo(P, A, A)), cc.spawn(cc.rotateBy(.5, F), cc.fadeOut(.5)), cc.callFunc(function() {}, this), cc.removeSelf()))
+                        S.runAction(cc.sequence(cc.delayTime(r), cc.spawn(cc.moveTo(P, M).easing(cc.easeQuarticActionOut()), cc.scaleTo(P, A, A)), cc.spawn(cc.rotateBy(.5, F), cc.fadeOut(.5)), cc.callFunc(function () { }, this), cc.removeSelf()))
                     }
                 },
-                createMouseRipple: function(e) {
+                createMouseRipple: function (e) {
                     var t = cc.instantiate(this.ripplePre);
                     this.liziNode.addChild(t, 100), t.setPosition(e), t.scaleX = .5, t.scaleY = .375, t.opacity = 200;
                     var a = s.getRandomNum(.5, 2);
                     t.runAction(cc.sequence(cc.spawn(cc.scaleTo(.2, a, 3 * a / 4), cc.fadeOut(.4)), cc.removeSelf()))
                 },
-                EatingEffectAction: function(e) {
+                EatingEffectAction: function (e) {
                     var t = cc.instantiate(this.bloodPre);
                     this.liziNode.addChild(t);
                     var a = e.typeID;
@@ -1011,7 +1017,7 @@ window.__require = function e(t, a, i) {
                         n = this.liziNode.convertToNodeSpaceAR(this.enemyNode.convertToWorldSpaceAR(o));
                     t.scaleX = 0, t.scaleY = 0, t.setPosition(n), t.runAction(cc.sequence(cc.scaleTo(.5, 1.3, 1.3).easing(cc.easeSineOut()), cc.fadeOut(.3), cc.removeSelf()))
                 },
-                EatingEffectAction2: function(e) {
+                EatingEffectAction2: function (e) {
                     var t = cc.instantiate(this.bloodPre);
                     this.liziNode.addChild(t);
                     var a = e.typeID;
@@ -1023,7 +1029,7 @@ window.__require = function e(t, a, i) {
                         s = this.liziNode.convertToNodeSpaceAR(this.playerNode.convertToWorldSpaceAR(n));
                     t.scaleX = 0, t.scaleY = 0, t.setPosition(s), t.runAction(cc.sequence(cc.scaleTo(.5, 1.3, 1.3).easing(cc.easeSineOut()), cc.fadeOut(.3), cc.removeSelf()))
                 },
-                StoneFadeInAction: function() {
+                StoneFadeInAction: function () {
                     var e = this.carmeraNode.getChildByName("MoveCamera").getComponent(cc.Camera).zoomRatio,
                         t = this.playerNode.position,
                         a = cc.find("Canvas/RotLiziNode");
@@ -1049,45 +1055,45 @@ window.__require = function e(t, a, i) {
                             v = s.getRandomNum(.05, .2, !1),
                             N = s.getRandomNum(.4, .8, !1),
                             S = [f, y, d];
-                        c.runAction(cc.sequence(cc.delayTime(v), cc.spawn(cc.bezierTo(N, S).easing(cc.easeQuadraticActionOut()), cc.scaleTo(N, u, u).easing(cc.easeBounceOut())), cc.spawn(cc.rotateBy(p, g), cc.fadeOut(p)), cc.callFunc(function() {}, this), cc.removeSelf()))
+                        c.runAction(cc.sequence(cc.delayTime(v), cc.spawn(cc.bezierTo(N, S).easing(cc.easeQuadraticActionOut()), cc.scaleTo(N, u, u).easing(cc.easeBounceOut())), cc.spawn(cc.rotateBy(p, g), cc.fadeOut(p)), cc.callFunc(function () { }, this), cc.removeSelf()))
                     }
                     this.myFish.opacity = 0, this.stoneNode.scaleX = 0, this.stoneNode.scaleY = 0, this.stoneNode.active = !0, this.stoneNode.zIndex = 50;
                     var C = this.stoneNode.getChildByName("stone1"),
                         T = this.stoneNode.getChildByName("stone2"),
                         A = this.stoneNode.getChildByName("stone3");
-                    this.stoneNode.runAction(cc.sequence(cc.delayTime(.15), cc.spawn(cc.scaleTo(.5, .8 * this.SizeScale, .8 * this.SizeScale).easing(cc.easeCircleActionInOut()), cc.callFunc(function() {
+                    this.stoneNode.runAction(cc.sequence(cc.delayTime(.15), cc.spawn(cc.scaleTo(.5, .8 * this.SizeScale, .8 * this.SizeScale).easing(cc.easeCircleActionInOut()), cc.callFunc(function () {
                         this.carmeraNode.runAction(cc.sequence(cc.moveBy(.05, 5, 5), cc.moveBy(.05, -5, -5)).repeat(10))
-                    }, this)), cc.delayTime(.1), cc.callFunc(function() {
+                    }, this)), cc.delayTime(.1), cc.callFunc(function () {
                         var e = this,
                             t = cc.instantiate(this.blackLayerPre);
-                        this.node.addChild(t, 10), t.active = !0, t.opacity = 200, t.setPosition(cc.v2(0, 0)), this.scheduleOnce(function() {
+                        this.node.addChild(t, 10), t.active = !0, t.opacity = 200, t.setPosition(cc.v2(0, 0)), this.scheduleOnce(function () {
                             e.LightAction(0, .3), e.Wu.getComponent(cc.Animation).play("wu"), e.stoneNode.getChildByName("light0").active = !0
-                        }, .3), C.runAction(cc.sequence(cc.rotateBy(1.5, 360).easing(cc.easeQuadraticActionOut()), cc.delayTime(.2), cc.callFunc(function() {
+                        }, .3), C.runAction(cc.sequence(cc.rotateBy(1.5, 360).easing(cc.easeQuadraticActionOut()), cc.delayTime(.2), cc.callFunc(function () {
                             C.getChildByName("light1").active = !0, C.getChildByName("light2").active = !0
-                        }, this))), T.runAction(cc.sequence(cc.delayTime(1.7), cc.rotateBy(1, -360).easing(cc.easeQuadraticActionOut()), cc.delayTime(.2), cc.callFunc(function() {
+                        }, this))), T.runAction(cc.sequence(cc.delayTime(1.7), cc.rotateBy(1, -360).easing(cc.easeQuadraticActionOut()), cc.delayTime(.2), cc.callFunc(function () {
                             T.getChildByName("light3").active = !0
-                        }, this))), A.runAction(cc.sequence(cc.delayTime(2.9), cc.callFunc(function() {
+                        }, this))), A.runAction(cc.sequence(cc.delayTime(2.9), cc.callFunc(function () {
                             var e = this;
-                            A.getChildByName("light4").active = !0, this.scheduleOnce(function() {
+                            A.getChildByName("light4").active = !0, this.scheduleOnce(function () {
                                 e.CreatePanLong()
                             }, .2)
                         }, this)))
                     }, this)))
                 },
-                SummonDragonAction: function() {
+                SummonDragonAction: function () {
                     var e = this;
                     this.gameOverFlags = !0, this.speed = 0, this.speedNum = 0, this.enemyNode.removeAllChildren(), this.enemyNode.destroy();
                     for (var t = this.playerNode.getChildByName("son"), a = t.convertToNodeSpaceAR(this.playerNode.convertToWorldSpaceAR(this.myFish.position)), i = 0; i < t.children.length; i++) {
                         var o = s.getRandomNum(50, 100, !1),
                             n = Math.atan2(a.y - t.children[i].y, a.x - t.children[i].x),
                             c = cc.misc.radiansToDegrees(n) + 90;
-                        t.children[i].runAction(cc.sequence(cc.spawn(cc.jumpTo(.5, a, o, 1).easing(cc.easeQuadraticActionOut()), cc.scaleTo(.5, 0, 0), cc.rotateTo(0, 1, c)), cc.callFunc(function() {}, this), cc.removeSelf()))
+                        t.children[i].runAction(cc.sequence(cc.spawn(cc.jumpTo(.5, a, o, 1).easing(cc.easeQuadraticActionOut()), cc.scaleTo(.5, 0, 0), cc.rotateTo(0, 1, c)), cc.callFunc(function () { }, this), cc.removeSelf()))
                     }
-                    this.scheduleOnce(function() {
+                    this.scheduleOnce(function () {
                         e.StoneFadeInAction()
                     }, 1)
                 },
-                CreatePanLong: function() {
+                CreatePanLong: function () {
                     var e = this;
                     this.setHisSocre(this.maxTypeID);
                     var t = cc.instantiate(this.PanlongPre);
@@ -1098,60 +1104,60 @@ window.__require = function e(t, a, i) {
                     t.setPosition(r);
                     var h = this,
                         l = cc.instantiate(this.lightPre);
-                    this.node.addChild(l, 30), l.scaleX = 0, l.scaleY = 0, l.setPosition(this.stoneNode.position), t.runAction(cc.sequence(cc.spawn(cc.moveTo(.5, c), cc.fadeIn(.3), cc.callFunc(function() {
+                    this.node.addChild(l, 30), l.scaleX = 0, l.scaleY = 0, l.setPosition(this.stoneNode.position), t.runAction(cc.sequence(cc.spawn(cc.moveTo(.5, c), cc.fadeIn(.3), cc.callFunc(function () {
                         this.LightAction(0, .5);
                         var e = t.getChildByName("panlong").getComponent(dragonBones.ArmatureDisplay);
                         e.timeScale = 1.5, e.playAnimation("newAnimation", 1)
-                    }, this)), cc.delayTime(.3), cc.callFunc(function() {
-                        l.runAction(cc.sequence(cc.scaleTo(.3, 1, 1), cc.callFunc(function() {}, this)))
-                    }, this), cc.delayTime(.6), cc.callFunc(function() {
+                    }, this)), cc.delayTime(.3), cc.callFunc(function () {
+                        l.runAction(cc.sequence(cc.scaleTo(.3, 1, 1), cc.callFunc(function () { }, this)))
+                    }, this), cc.delayTime(.6), cc.callFunc(function () {
                         var e = this,
                             t = cc.instantiate(this.mainBtnPre);
-                        t.scaleX = .7 * this.SizeScale, t.scaleY = .7 * this.SizeScale, this.node.addChild(t, 5e3), t.opacity = 0, t.setPosition(cc.v2(-this.gameWidth / 2 + this.gameWidth / 8, this.gameHeight / 2 - this.gameWidth / 8)), t.runAction(cc.fadeIn(.3)), t.on(cc.Node.EventType.TOUCH_START, function() {}), t.on(cc.Node.EventType.TOUCH_END, function() {
+                        t.scaleX = .7 * this.SizeScale, t.scaleY = .7 * this.SizeScale, this.node.addChild(t, 5e3), t.opacity = 0, t.setPosition(cc.v2(-this.gameWidth / 2 + this.gameWidth / 8, this.gameHeight / 2 - this.gameWidth / 8)), t.runAction(cc.fadeIn(.3)), t.on(cc.Node.EventType.TOUCH_START, function () { }), t.on(cc.Node.EventType.TOUCH_END, function () {
                             console.log("MoreGame"), window.location.href = o.moreGameUrl
                         });
                         var n = cc.instantiate(this.replayButtonPre);
-                        this.node.addChild(n, 5e3), n.scaleX = 0, n.scaleY = 0, n.setPosition(cc.v2(0, -this.stoneNode.y - 200 * this.Hscale)), n.runAction(cc.scaleTo(.5, .6 * this.SizeScale, .6 * this.SizeScale).easing(cc.easeBackOut()), cc.callFunc(function() {}, this));
+                        this.node.addChild(n, 5e3), n.scaleX = 0, n.scaleY = 0, n.setPosition(cc.v2(0, -this.stoneNode.y - 200 * this.Hscale)), n.runAction(cc.scaleTo(.5, .6 * this.SizeScale, .6 * this.SizeScale).easing(cc.easeBackOut()), cc.callFunc(function () { }, this));
                         var s = cc.find("Canvas/nameLabel");
                         s.zIndex = 6001, s.zIndex = 6e3, s.setPosition(cc.v2(this.stoneNode.x + 150 * this.Wscale, this.stoneNode.y - 200 * this.Hscale)), this.nameLabel.string = renderConfig.getStrForType("name_10");
                         var c = cc.find("Canvas/winLabel");
                         c.zIndex = 6e3;
                         var r = cc.v2(n.x, n.y + n.height / 2 * .7 * this.Hscale + 50 * this.Hscale);
-                        c.setPosition(cc.v2(r.x, r.y - 50 * this.SizeScale)), c.runAction(cc.sequence(cc.spawn(cc.fadeIn(.3), cc.moveTo(.3, r)), cc.callFunc(function() {}, this))), this.scheduleOnce(function() {
-                            h.canTouchReplay = !0, n.runAction(cc.sequence(cc.delayTime(2), cc.scaleTo(.3, .7 * e.SizeScale).easing(cc.easeSineInOut()), cc.scaleTo(.3, .6 * e.SizeScale).easing(cc.easeSineInOut()), cc.rotateTo(.1, 15).easing(cc.easeSineInOut()), cc.rotateTo(.2, -15).easing(cc.easeSineInOut()), cc.rotateTo(.1, 15).easing(cc.easeSineInOut()), cc.rotateTo(.2, -15).easing(cc.easeSineInOut()), cc.rotateTo(.1, 0).easing(cc.easeSineInOut()))).repeatForever(), n.on(cc.Node.EventType.TOUCH_START, function() {}), n.on(cc.Node.EventType.TOUCH_END, function() {
+                        c.setPosition(cc.v2(r.x, r.y - 50 * this.SizeScale)), c.runAction(cc.sequence(cc.spawn(cc.fadeIn(.3), cc.moveTo(.3, r)), cc.callFunc(function () { }, this))), this.scheduleOnce(function () {
+                            h.canTouchReplay = !0, n.runAction(cc.sequence(cc.delayTime(2), cc.scaleTo(.3, .7 * e.SizeScale).easing(cc.easeSineInOut()), cc.scaleTo(.3, .6 * e.SizeScale).easing(cc.easeSineInOut()), cc.rotateTo(.1, 15).easing(cc.easeSineInOut()), cc.rotateTo(.2, -15).easing(cc.easeSineInOut()), cc.rotateTo(.1, 15).easing(cc.easeSineInOut()), cc.rotateTo(.2, -15).easing(cc.easeSineInOut()), cc.rotateTo(.1, 0).easing(cc.easeSineInOut()))).repeatForever(), n.on(cc.Node.EventType.TOUCH_START, function () { }), n.on(cc.Node.EventType.TOUCH_END, function () {
                                 h.canTouchReplay && (cc.eventManager.removeAllListeners(), a.GAME_OVER_BOOL = !0, a.gameScore = 0, a.publicGameBool || adBreak({
                                     type: "next",
                                     name: "restart-game"
                                 }), console.log("loadScene"), i.loadingScene("MainGameScene"))
                             })
                         }, .8)
-                    }, this))), this.scheduleOnce(function() {
-                        e.stoneNode.runAction(cc.sequence(cc.spawn(cc.scaleBy(.5, .8 * e.SizeScale, .8 * e.SizeScale), cc.moveTo(.5, 0, e.gameHeight / 6).easing(cc.easeBackOut()), cc.callFunc(function() {
-                            l.runAction(cc.sequence(cc.moveTo(.5, 0, this.gameHeight / 6).easing(cc.easeBackOut()), cc.callFunc(function() {}, this)))
-                        }, e)), cc.callFunc(function() {}, e))), e.scheduleOnce(function() {
-                            l.runAction(cc.sequence(cc.rotateBy(10, 360), cc.callFunc(function() {}, e)).repeatForever())
-                        }, .5), t.runAction(cc.sequence(cc.spawn(cc.scaleTo(.5, .9 * e.SizeScale, .9 * e.SizeScale), cc.moveTo(.5, -50 * e.SizeScale, e.gameHeight / 6 - 370 * e.SizeScale).easing(cc.easeBackOut())), cc.callFunc(function() {}, e)))
-                    }, 1.3), this.scheduleOnce(function() {
+                    }, this))), this.scheduleOnce(function () {
+                        e.stoneNode.runAction(cc.sequence(cc.spawn(cc.scaleBy(.5, .8 * e.SizeScale, .8 * e.SizeScale), cc.moveTo(.5, 0, e.gameHeight / 6).easing(cc.easeBackOut()), cc.callFunc(function () {
+                            l.runAction(cc.sequence(cc.moveTo(.5, 0, this.gameHeight / 6).easing(cc.easeBackOut()), cc.callFunc(function () { }, this)))
+                        }, e)), cc.callFunc(function () { }, e))), e.scheduleOnce(function () {
+                            l.runAction(cc.sequence(cc.rotateBy(10, 360), cc.callFunc(function () { }, e)).repeatForever())
+                        }, .5), t.runAction(cc.sequence(cc.spawn(cc.scaleTo(.5, .9 * e.SizeScale, .9 * e.SizeScale), cc.moveTo(.5, -50 * e.SizeScale, e.gameHeight / 6 - 370 * e.SizeScale).easing(cc.easeBackOut())), cc.callFunc(function () { }, e)))
+                    }, 1.3), this.scheduleOnce(function () {
                         var t = e.stoneNode.getChildByName("stone1"),
                             a = e.stoneNode.getChildByName("stone2"),
                             i = e.stoneNode.getChildByName("stone3");
-                        t.runAction(cc.sequence(cc.rotateBy(2, 10), cc.callFunc(function() {}, e)).repeatForever()), a.runAction(cc.sequence(cc.rotateBy(1, -10), cc.callFunc(function() {}, e)).repeatForever()), i.runAction(cc.sequence(cc.rotateBy(.5, 10), cc.callFunc(function() {}, e)).repeatForever())
-                    }, 1.8), this.scheduleOnce(function() {
+                        t.runAction(cc.sequence(cc.rotateBy(2, 10), cc.callFunc(function () { }, e)).repeatForever()), a.runAction(cc.sequence(cc.rotateBy(1, -10), cc.callFunc(function () { }, e)).repeatForever()), i.runAction(cc.sequence(cc.rotateBy(.5, 10), cc.callFunc(function () { }, e)).repeatForever())
+                    }, 1.8), this.scheduleOnce(function () {
                         var a = s.getRandomNum(0, 30, !1);
-                        t.runAction(cc.sequence(cc.spawn(cc.sequence(cc.moveBy(1, 0, -a), cc.moveBy(1, 0, a)), cc.callFunc(function() {
+                        t.runAction(cc.sequence(cc.spawn(cc.sequence(cc.moveBy(1, 0, -a), cc.moveBy(1, 0, a)), cc.callFunc(function () {
                             var e = t.getChildByName("panlong").getComponent(dragonBones.ArmatureDisplay);
                             e.timeScale = .2, e.playAnimation("newAnimation_复制1", 0)
-                        }, e)), cc.callFunc(function() {}, e)).repeatForever())
+                        }, e)), cc.callFunc(function () { }, e)).repeatForever())
                     }, 1)
                 },
-                LightAction: function(e, t) {
-                    this.lightFlags = !1, this.light1.scaleX = .9, this.light1.scaleY = .9, this.light2.scaleX = .9, this.light2.scaleY = .9, this.light1.opacity = 255, this.light2.opacity = 255, this.light1.runAction(cc.sequence(cc.delayTime(e), cc.fadeIn(.1), cc.fadeOut(.3), cc.callFunc(function() {
+                LightAction: function (e, t) {
+                    this.lightFlags = !1, this.light1.scaleX = .9, this.light1.scaleY = .9, this.light2.scaleX = .9, this.light2.scaleY = .9, this.light1.opacity = 255, this.light2.opacity = 255, this.light1.runAction(cc.sequence(cc.delayTime(e), cc.fadeIn(.1), cc.fadeOut(.3), cc.callFunc(function () {
                         this.lightFlags = !0
-                    }, this))), this.light2.runAction(cc.sequence(cc.delayTime(t), cc.fadeIn(.1), cc.fadeOut(.3), cc.callFunc(function() {
+                    }, this))), this.light2.runAction(cc.sequence(cc.delayTime(t), cc.fadeIn(.1), cc.fadeOut(.3), cc.callFunc(function () {
                         this.lightFlags = !0
                     }, this))), this.lightjudeTime = s.getRandomNum(3, 6, !1)
                 },
-                BubbleAction: function() {
+                BubbleAction: function () {
                     if (!this.gameOverFlags) {
                         var e = cc.instantiate(this.BubblePre);
                         s.getRandomNum(1, 3, !0), this.liziNode.addChild(e);
@@ -1166,7 +1172,7 @@ window.__require = function e(t, a, i) {
                         e.angle = 360 * Math.random(), e.runAction(cc.sequence(cc.spawn(cc.moveBy(c, -n * Math.cos(i) + r, -n * Math.sin(i) + r), cc.scaleTo(c, o, o)), cc.fadeOut(.2), cc.removeSelf()))
                     }
                 },
-                WaterAction: function() {
+                WaterAction: function () {
                     if (!this.gameOverFlags)
                         for (var e = s.getRandomNum(2, 3, !0), t = s.getRandomNum(.2, .5, !1), a = s.getRandomNum(-.3, .3), i = this.carmeraNode.position, o = s.getRandomNum(-this.gameWidth, this.gameWidth, !1), n = s.getRandomNum(-this.gameHeight, this.gameHeight, !1), c = cc.v2(i.x + o, i.y + n), r = this.liziNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(c)), h = 0; h < e; h++) {
                             var l = cc.instantiate(this.bowenPre);
@@ -1176,7 +1182,7 @@ window.__require = function e(t, a, i) {
                             l.scaleX = 0, l.scaleY = 0, l.runAction(cc.sequence(cc.delayTime(t * h), cc.scaleTo(1, m + a, d + a), cc.fadeOut(.3), cc.removeSelf()))
                         }
                 },
-                DieAction: function() {
+                DieAction: function () {
                     this.speed = 0, this.gameOverFlags = !0, cc.audioEngine.play(this.failMusic, !1, 1), this.playerNode.opacity = 0;
                     var e = cc.instantiate(this.bloodPre);
                     this.liziNode.addChild(e, 1e3);
@@ -1185,22 +1191,22 @@ window.__require = function e(t, a, i) {
                     var a = 100 + 25 * t;
                     e.width = a, e.height = a;
                     var i = this.liziNode.convertToNodeSpaceAR(this.node.convertToWorldSpaceAR(this.playerNode.position));
-                    e.scaleX = 0, e.scaleY = 0, e.setPosition(i), e.runAction(cc.sequence(cc.scaleTo(.5, 1.3, 1.3).easing(cc.easeSineOut()), cc.fadeOut(.3), cc.callFunc(function() {
+                    e.scaleX = 0, e.scaleY = 0, e.setPosition(i), e.runAction(cc.sequence(cc.scaleTo(.5, 1.3, 1.3).easing(cc.easeSineOut()), cc.fadeOut(.3), cc.callFunc(function () {
                         this.playerNode.destroy(), this.gameEnd()
                     }, this), cc.removeSelf()))
                 },
-                updateFishRotate: function(e, t, a) {
+                updateFishRotate: function (e, t, a) {
                     var i = e.angle % 360;
                     i = e.angle < 0 ? 360 - Math.abs(i) : i;
                     var o = t < 0 ? 360 - Math.abs(t) : t;
                     Math.abs(i - o) > a && Math.abs(i - o) < 360 - a ? Math.abs(i - o) > 180 ? i - o > 180 ? e.angle += a : e.angle -= a : i >= o ? e.angle -= a : e.angle += a : e.angle = t
                 },
-                setHisSocre: function(e) {
+                setHisSocre: function (e) {
                     cc.sys.localStorage.setItem("ZhaoHuanShenLong_12WS", e)
                 },
-                addTouchEvents: function() {
+                addTouchEvents: function () {
                     var e = this;
-                    this.node.on(cc.Node.EventType.TOUCH_START, function(t) {
+                    this.node.on(cc.Node.EventType.TOUCH_START, function (t) {
                         if (a.GAME_OVER_BOOL && a.noTouchBool && e.touchBeginFlags) {
                             e.touchBeginFlags = !1;
                             var i = t.getLocation();
@@ -1208,7 +1214,7 @@ window.__require = function e(t, a, i) {
                         }
                     }, this), this.node.on(cc.Node.EventType.TOUCH_MOVE, this.on_touch_move, this), this.node.on(cc.Node.EventType.TOUCH_END, this.on_touch_end, this)
                 },
-                on_touch_move: function(e) {
+                on_touch_move: function (e) {
                     if (!this.gameOverFlags && this.canMoveFlags) {
                         this.speed = this.speedNum;
                         var t = e.getLocation(),
@@ -1219,14 +1225,14 @@ window.__require = function e(t, a, i) {
                         this.createMouseRipple(n)
                     }
                 },
-                on_touch_end: function(e) {
+                on_touch_end: function (e) {
                     if (!this.gameOverFlags) {
                         this.touchBeginFlags = !0;
                         var t = e.getLocation();
                         this.node.convertToNodeSpaceAR(t)
                     }
                 },
-                update: function(e) {
+                update: function (e) {
                     if (this.updateCreate(), this.removeSmallFish(), this.removeSomeBigFish(), this.playerNode.typeID, this.waterCount++, this.waterCount > this.randnum && (this.WaterAction(), this.waterCount = 0, this.randnum = s.getRandomNum(20, 40, !0)), this.OffPos) {
                         if (this.gameOverFlags) return;
                         var t = cc.v2(0, 1).signAngle(this.OffPos),
@@ -1245,22 +1251,22 @@ window.__require = function e(t, a, i) {
                     }
                     this.gameOverGoToOVer(), this.gameEndFlags
                 },
-                gameEnd: function() {
+                gameEnd: function () {
                     a.GAME_OVER_BOOL = !1, o.gameOverShowText(a.gameScore, 1), this.node.runAction(cc.sequence(cc.delayTime(.5), cc.callFunc(this.gameEnd1.bind(this))))
                 },
-                gameEnd1: function() {
+                gameEnd1: function () {
                     var e = cc.instantiate(this.blackLayerPre);
-                    this.node.addChild(e, 2600), e.width = this.gameWidth, e.height = this.gameHeight, e.x = 0, e.y = 0, e.opacity = 0, e.active = !0, e.runAction(cc.fadeTo(.3, 140)), this.gameOveEndBool = !0, 1 == a.curType ? (this.gameOverT1.string = "游 戏 结 束", this.gameOverT2.string = "点 击 查 看 分 数") : 2 == a.curType ? (this.gameOverT1.string = "遊 戲 結 束", this.gameOverT2.string = "點 擊 查 看 分 數") : 3 == a.curType ? (this.gameOverT1.string = "Game Over", this.gameOverT2.string = "Click to view the score") : 4 == a.curType && (this.gameOverT1.string = "게임 종료", this.gameOverT2.string = "클릭 하여 점수 보기"), this.gameOverT1.node.zIndex = 2999, this.gameOverT2.node.zIndex = 2999, this.gameOverT1.node.opacity = 0, this.gameOverT1.node.x = 0, this.gameOverT1.node.y = 0, this.gameOverT1.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(.5), cc.moveBy(.5, 0, -50)), cc.callFunc(function() {}, this), cc.callFunc(function() {
+                    this.node.addChild(e, 2600), e.width = this.gameWidth, e.height = this.gameHeight, e.x = 0, e.y = 0, e.opacity = 0, e.active = !0, e.runAction(cc.fadeTo(.3, 140)), this.gameOveEndBool = !0, 1 == a.curType ? (this.gameOverT1.string = "游 戏 结 束", this.gameOverT2.string = "点 击 查 看 分 数") : 2 == a.curType ? (this.gameOverT1.string = "遊 戲 結 束", this.gameOverT2.string = "點 擊 查 看 分 數") : 3 == a.curType ? (this.gameOverT1.string = "Game Over", this.gameOverT2.string = "Click to view the score") : 4 == a.curType && (this.gameOverT1.string = "게임 종료", this.gameOverT2.string = "클릭 하여 점수 보기"), this.gameOverT1.node.zIndex = 2999, this.gameOverT2.node.zIndex = 2999, this.gameOverT1.node.opacity = 0, this.gameOverT1.node.x = 0, this.gameOverT1.node.y = 0, this.gameOverT1.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(.5), cc.moveBy(.5, 0, -50)), cc.callFunc(function () { }, this), cc.callFunc(function () {
                         e.canTouch = !0
-                    }, this))), this.gameOverT2.node.opacity = 0, this.gameOverT2.node.x = 0, this.gameOverT2.node.y = 100, this.gameOverT2.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(.5), cc.moveBy(.5, 0, -50)), cc.callFunc(function(e) {
+                    }, this))), this.gameOverT2.node.opacity = 0, this.gameOverT2.node.x = 0, this.gameOverT2.node.y = 100, this.gameOverT2.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(.5), cc.moveBy(.5, 0, -50)), cc.callFunc(function (e) {
                         e.runAction(cc.sequence(cc.delayTime(2), cc.scaleTo(.3, 1.2).easing(cc.easeSineInOut()), cc.scaleTo(.3, 1).easing(cc.easeSineInOut()))).repeatForever()
                     }, this)))
                 },
-                initEndLayer: function() {
+                initEndLayer: function () {
                     var e = cc.instantiate(this.gameOverPre);
                     this.node.addChild(e, 3e3)
                 },
-                gameOverGoToOVer: function() {
+                gameOverGoToOVer: function () {
                     this.gameOveEndBool && (this.gameOverNum++, this.gameOverNum >= 900 && (this.gameOverNum = 0, this.gameOveEndBool = !1))
                 }
             }), cc._RF.pop()
@@ -1276,7 +1282,7 @@ window.__require = function e(t, a, i) {
         }
     ],
     MainManage: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "946adGkxvdBmZXnlD952XtK", "MainManage");
             var a = e("HttpManagerJs"),
@@ -1325,7 +1331,7 @@ window.__require = function e(t, a, i) {
                     playAgainText: null,
                     endHttpShowInfo: null,
                     moreGameUrl: null,
-                    init: function(e, t, i) {
+                    init: function (e, t, i) {
                         if (!o.publicGameBool) {
                             if (o.playNum >= 1) return;
                             o.playNum++
@@ -1334,7 +1340,7 @@ window.__require = function e(t, a, i) {
                         var s = this.initLanguage();
                         this.gameNameText = s.game_name, this.gameInfoText = s.game_info, this.txtStartText = s.txtStart, this.txtMoreText = s.txtMore, this.txtAgainText = s.txtAgain, this.gameEndLText = s.gameEndL, this.gameEndL1Text = s.gameEndL1, this.bgLayRgb = s.bgRgb, this.gameEndName1 = s.gameT2, this.gameEndName2 = s.gameT3, this.gameEndUrl1 = s.gameUrl1, this.gameEndUrl2 = s.gameUrl2, this.langugeType = this.curType, o.publicGameBool || n.goToCover(this.adShowBefore, this.adShowAfter, e, t, i)
                     },
-                    getHttpGameId1: function() {
+                    getHttpGameId1: function () {
                         var e = window.location.href,
                             t = e.substring(0, e.lastIndexOf("//") + 2),
                             a = window.location.host,
@@ -1345,7 +1351,7 @@ window.__require = function e(t, a, i) {
                             s = o.substring(o.lastIndexOf("/game/") + 1, o.length).split("/");
                         s.length >= 2 && (n = s[1]), this.gameHttpId = n, cc.log("gameId", n), e.substring(e.lastIndexOf("//") + 4, e.lastIndexOf("com") + 3), this.moreGameUrl = this.httpHead + this.endHttp
                     },
-                    getHttpGameId: function() {
+                    getHttpGameId: function () {
                         var e = window.location.href,
                             t = e.substring(0, e.lastIndexOf("//") + 2),
                             a = window.location.host,
@@ -1358,28 +1364,28 @@ window.__require = function e(t, a, i) {
                         this.gameHttpId = c, console.log("gameIdNew", c);
                         var r = e.substring(e.lastIndexOf("//") + 4, e.lastIndexOf("com") + 3); - 1 == e.search("/game/") ? this.moreGameUrl = t + a : this.moreGameUrl = t + r, console.log("moreGame", this.moreGameUrl)
                     },
-                    gameOverShowText: function(e, t) {
+                    gameOverShowText: function (e, t) {
                         this.ajaxLoad(this.subScoreHttp, "gameScore=" + e + "&gameId=" + this.gameHttpId + "&gameType=" + t, this.scoreResult)
                     },
-                    gamePV_load: function() {
+                    gamePV_load: function () {
                         this.ajaxLoad(this.gamePvHttp, "gameId=" + this.gameHttpId, this.ajaxOnLogoResult)
                     },
-                    ajaxOnLogoResult: function() {},
-                    ajaxLoad: function(e, t, a) {
+                    ajaxOnLogoResult: function () { },
+                    ajaxLoad: function (e, t, a) {
                         var i = cc.loader.getXMLHttpRequest();
                         i.onreadystatechange = a, i.open("POST", e), i.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
                     },
-                    scoreResult: function(e) {
+                    scoreResult: function (e) {
                         if (null != e.currentTarget.response && "" != e.currentTarget.response) {
                             var t = JSON.parse(e.currentTarget.response);
                             cc.log("endshow", t.content), c.endHttpShowInfo = t.content
                         }
                     },
-                    initLanguage: function() {
+                    initLanguage: function () {
                         var e = null;
                         return cc.sys.language == cc.sys.LANGUAGE_CHINESE ? (this.curType = 1, e = i.language_1) : (cc.log("英文"), this.curType = 2, e = i.language_2), e
                     },
-                    getLinkGameReturn: function(e, t, a, i) {
+                    getLinkGameReturn: function (e, t, a, i) {
                         if (console.log("err0", e), console.log("err1", t), console.log("err2", a), console.log("err3", i), 0 == e) {
                             this.ranLinkData = t, this.adShowBefore = this.ranLinkData.gameSet.adShowBefore, this.adShowAfter = this.ranLinkData.gameSet.adShowAfter, this.endLayCol = this.ranLinkData.gameSet.endLayerColor, this.moreBtnBgCol = this.ranLinkData.gameSet.moreBtnBgCol, this.moreBtnTextCol = this.ranLinkData.gameSet.moreBtnTextCol, this.moreGameUrl = this.ranLinkData.gameSet.moreBtnUrl, this.recGameData = a, this.ranRecGameData(), this.InfoData = i, this.endShow0 = this.InfoData.endShow0, this.endShow1 = this.InfoData.endShow1, this.endShow2 = this.InfoData.endShow2, this.endShow3 = this.InfoData.endShow3, this.infoGameName = this.InfoData.gameName, this.showText = this.InfoData.showText, this.startText = this.InfoData.startText, this.moreGameText = this.InfoData.moreGame, this.playAgainText = this.InfoData.rePlay, this.gameInfoText = this.InfoData.showText, this.txtStartText = this.InfoData.startText, this.txtMoreText = this.InfoData.moreGame, this.txtAgainText = this.InfoData.rePlay, console.log("LoadMainGameScnee");
                             var s = o.launchScene,
@@ -1388,7 +1394,7 @@ window.__require = function e(t, a, i) {
                             n.goToCover(this.adShowBefore, this.adShowAfter, s, c, r)
                         }
                     },
-                    ranRecGameData: function() {
+                    ranRecGameData: function () {
                         if (null != this.recGameData && "" != this.recGameData) {
                             this.returnBool = !1;
                             var e = this.recGameData.length,
@@ -1396,7 +1402,7 @@ window.__require = function e(t, a, i) {
                             cc.log("ranNNN", t), this.recGameUrl = this.recGameData[t].data_link, this.recGameDelPer = this.recGameData[t].delay_per, this.recGameDelPau = this.recGameData[t].delay_pau, this.recGameimg1 = this.recGameData[t].img_1, this.recGameimg2 = this.recGameData[t].img_2, this.recGamePos = this.recGameData[t].poistion
                         }
                     },
-                    ranLinkUrl: function() {
+                    ranLinkUrl: function () {
                         if (null != this.ranLinkData && this.ranLinkData.gameList && null != this.ranLinkData.gameList) {
                             var e = this.ranLinkData.gameList.length,
                                 t = o.returnRanNum(1, e) - 1;
@@ -1404,10 +1410,10 @@ window.__require = function e(t, a, i) {
                         }
                         return null
                     },
-                    gotoEndLayer: function() {
+                    gotoEndLayer: function () {
                         this.showGameEndLayer()
                     },
-                    showGameEndLayer: function() {
+                    showGameEndLayer: function () {
                         console.log("Gottttttgameend"), s.loadingLayer("panel/GameOverLayer")
                     }
                 };
@@ -1421,7 +1427,7 @@ window.__require = function e(t, a, i) {
         }
     ],
     OtherConfig: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "608a3yCxFxLC6+PTyEzdmgt", "OtherConfig");
             var a = {
@@ -1491,7 +1497,7 @@ window.__require = function e(t, a, i) {
                     EN: "Dragon",
                     KOR: "신룡"
                 },
-                getStrForType: function(e) {
+                getStrForType: function (e) {
                     var t;
                     return t = "zh-CN" == window.navigator.language || "zh-cn" == window.navigator.language ? "CN" : "zh-TW" == window.navigator.language || "zh-HK" == window.navigator.language || "ja-JP" == window.navigator.language ? "CHT" : cc.sys.language == cc.sys.LANGUAGE_ENGLISH ? "EN" : cc.sys.language == cc.sys.LANGUAGE_KOREAN ? "KOR" : "EN", null != this[e] ? this[e][t] : (cc.log("没有翻译:" + e), e)
                 }
@@ -1502,20 +1508,20 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     PoolManager: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "6ed4diP7FRFIJc3wpj5cOOM", "PoolManager");
             var a = {
                 PoolDic: {
                     bulletPool: null
                 },
-                addPoolObj: function(e, t) {
+                addPoolObj: function (e, t) {
                     null == this.PoolDic[e] && (this.PoolDic[e] = new cc.NodePool(e)), this.PoolDic[e].put(t)
                 },
-                getPoolObj: function(e) {
+                getPoolObj: function (e) {
                     return null == this.PoolDic[e] ? null : this.PoolDic[e].size() > 1 ? this.PoolDic[e].get() : null
                 },
-                clearPool: function(e) {
+                clearPool: function (e) {
                     if (null != this.PoolDic[e]) return this.PoolDic[e].clear();
                     cc.error("没有添加对象池：", e)
                 }
@@ -1524,7 +1530,7 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     ToolsJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "5eeb3uOnbFGtKGg8ygEwPGB", "ToolsJs");
             var a = {
@@ -1532,128 +1538,128 @@ window.__require = function e(t, a, i) {
                 PrefabDic: {},
                 AudioClipDic: {},
                 storageName: "LILILII",
-                setStorage: function(e, t, a) {
+                setStorage: function (e, t, a) {
                     a && (t = JSON.stringify(t)), e = this.storageName + e, cc.sys.localStorage.setItem(e, t)
                 },
-                getStorage: function(e, t) {
+                getStorage: function (e, t) {
                     e = this.storageName + e;
                     var a = cc.sys.localStorage.getItem(e);
                     return isNaN(a) || (a = parseInt(a)), "NaN" == a.toString() && (a = null), t && null != a && (a = JSON.parse(a)), a
                 },
-                logJsonObject: function(e) {
+                logJsonObject: function (e) {
                     console.log(JSON.stringify(e))
                 },
-                addNoArr: function(e, t) {
+                addNoArr: function (e, t) {
                     return e.indexOf(t) < 0 && (e.push(t), !0)
                 },
-                removeNodeForArr: function(e, t) {
+                removeNodeForArr: function (e, t) {
                     return e.splice(e.indexOf(t), 1)
                 },
-                addArrForIndex: function(e, t, a) {
+                addArrForIndex: function (e, t, a) {
                     return e.splice(t, 0, a)
                 },
-                newSprite: function(e, t) {
+                newSprite: function (e, t) {
                     var a = new cc.Node;
                     return null != this.SpriteFrameDic[e] ? (a.addComponent(cc.Sprite).spriteFrame = this.SpriteFrameDic[e], null != t && t(a)) : (a.addComponent(cc.Sprite), loadTools.loadNodeSprite(a, e, t)), a
                 },
-                setTexture: function(e, t) {
+                setTexture: function (e, t) {
                     this.SpriteFrameDic[t] ? e.getComponent(cc.Sprite).spriteFrame = this.SpriteFrameDic[t] : loadTools.loadNodeSprite(e, t)
                 },
-                setBtnClickSpr: function(e, t, a, i) {
-                    this.SpriteFrameDic[t] ? (e.getComponent(cc.Button).normalSprite = this.SpriteFrameDic[t], e.getComponent(cc.Button).hoverSprite = this.SpriteFrameDic[t], e.getComponent(cc.Sprite).pressedSprite = this.SpriteFrameDic[a], null != i && i()) : (loadTools.getResSpr(t, function(t) {
+                setBtnClickSpr: function (e, t, a, i) {
+                    this.SpriteFrameDic[t] ? (e.getComponent(cc.Button).normalSprite = this.SpriteFrameDic[t], e.getComponent(cc.Button).hoverSprite = this.SpriteFrameDic[t], e.getComponent(cc.Sprite).pressedSprite = this.SpriteFrameDic[a], null != i && i()) : (loadTools.getResSpr(t, function (t) {
                         e.getComponent(cc.Button).normalSprite = t, e.getComponent(cc.Button).hoverSprite = t
-                    }), loadTools.getResSpr(a, function(t) {
+                    }), loadTools.getResSpr(a, function (t) {
                         e.getComponent(cc.Button).pressedSprite = t, null != i && i()
                     }))
                 },
-                setSpriteState: function(e, t) {
+                setSpriteState: function (e, t) {
                     var a = 0 == t ? "2d_sprite" : "gray_sprite";
-                    cc.loader.loadRes("materials/" + a, cc.Material, function(t, a) {
+                    cc.loader.loadRes("materials/" + a, cc.Material, function (t, a) {
                         t ? cc.error(t) : e.getComponent(cc.Sprite).setMaterial(0, a)
                     })
                 },
-                clonePrefab: function(e, t, a, i, o) {
+                clonePrefab: function (e, t, a, i, o) {
                     void 0 === o && (o = 0);
                     var n = this.PrefabDic[e],
                         s = null;
                     return null != n ? (s = cc.instantiate(n), t && t.addChild(s, o), a && (s.position = a), null != i && i(s)) : loadTools.loadPrefab(e, t, a, i, o), s
                 },
-                newLabel: function(e, t, a, i, o, n) {
+                newLabel: function (e, t, a, i, o, n) {
                     void 0 === a && (a = 20), void 0 === i && (i = .5), void 0 === o && (o = .5), void 0 === n && (n = 0);
                     var s = new cc.Node;
                     s.anchorX = i, s.anchorY = o;
                     var c = s.addComponent(cc.Label);
                     return c.string = e, c.fontSize = a, t.addChild(s, n), s
                 },
-                delayTimeCall: function(e, t, a, i) {
+                delayTimeCall: function (e, t, a, i) {
                     e.runAction(cc.sequence(cc.delayTime(a), cc.callFunc(t, i)))
                 },
-                getDistance: function(e, t) {
+                getDistance: function (e, t) {
                     return e.sub(t).mag()
                 },
-                getDiscForNode: function(e, t) {
+                getDiscForNode: function (e, t) {
                     var a = this.getToWorldPosAR(e),
                         i = this.getToWorldPosAR(t);
                     return this.getDistance(a, i)
                 },
-                getVectorForPos: function(e, t) {
+                getVectorForPos: function (e, t) {
                     return t.sub(e)
                 },
-                getStrForNum: function(e, t, a) {
+                getStrForNum: function (e, t, a) {
                     void 0 === t && (t = 1), void 0 === a && (a = 2);
                     var i = "";
                     return e >= 1e3 * Math.pow(10, a - 1) ? (e /= 1e3, i = "k", (e = Math.floor(e * Math.pow(10, t)) / Math.pow(10, t)) >= 1e3 && (e /= 1e3, i = "M", e = Math.floor(e * Math.pow(10, t)) / Math.pow(10, t)), e >= 1e3 && (e /= 1e3, i = "G", e = Math.floor(e * Math.pow(10, t)) / Math.pow(10, t)), e + i) : (e = Math.ceil(e)) + i
                 },
-                getStrForNum2: function(e) {
+                getStrForNum2: function (e) {
                     var t = "";
                     if ((e = (e || 0).toString()) <= 3) return e;
                     for (; e.length > 3;) t = "," + e.slice(-3) + t, e = e.slice(0, e.length - 3);
                     return e && (t = e + t), t
                 },
-                insertStrForIndex: function(e, t, a) {
+                insertStrForIndex: function (e, t, a) {
                     return e.slice(0, t) + a + e.slice(t)
                 },
-                prefixInteger: function(e, t) {
+                prefixInteger: function (e, t) {
                     return void 0 === t && (t = 2), (Array(t).join("0") + e).slice(-t)
                 },
-                getNodePosForWroldPos: function(e, t) {
+                getNodePosForWroldPos: function (e, t) {
                     return e.convertToNodeSpaceAR(t)
                 },
-                getToNodePos: function(e, t) {
+                getToNodePos: function (e, t) {
                     var a = e.parent.convertToWorldSpaceAR(e.position);
                     return t.convertToNodeSpaceAR(a)
                 },
-                getToWorldPosAR: function(e) {
+                getToWorldPosAR: function (e) {
                     return e.parent.convertToWorldSpaceAR(e.position)
                 },
-                getToWorldPos: function(e) {
+                getToWorldPos: function (e) {
                     return e.parent.convertToWorldSpace(e.position)
                 },
-                isBoxContainPos: function(e, t) {
+                isBoxContainPos: function (e, t) {
                     return e.getBoundingBox().contains(t)
                 },
-                isBoxContainWorldPos: function(e, t) {
+                isBoxContainWorldPos: function (e, t) {
                     return e.getBoundingBoxToWorld().contains(t)
                 },
-                isRectInterRect: function(e, t) {
+                isRectInterRect: function (e, t) {
                     return e.getBoundingBoxToWorld().intersects(t.getBoundingBoxToWorld())
                 },
-                returnRandom: function(e, t) {
+                returnRandom: function (e, t) {
                     return e + Math.floor(Math.random() * (t - e + 1))
                 },
-                setAngleForParent: function() {},
-                setNodeParent: function(e, t, a) {
+                setAngleForParent: function () { },
+                setNodeParent: function (e, t, a) {
                     void 0 === a && (a = !0);
                     var i = this.getToNodePos(e, t);
                     e.parent = t, e.position = i, a && e.parent && (e.angle += e.parent.angle)
                 },
-                refractionY: function(e) {
+                refractionY: function (e) {
                     return Math.atan2(Math.sin(e), -Math.cos(e))
                 },
-                refractionX: function(e) {
+                refractionX: function (e) {
                     return Math.atan2(-Math.sin(e), Math.cos(e))
                 },
-                aginSortArr: function(e) {
+                aginSortArr: function (e) {
                     for (var t = 0; t < e.length; t++) {
                         var i = a.returnRandom(0, e.length - 1);
                         if (i != t) {
@@ -1662,10 +1668,10 @@ window.__require = function e(t, a, i) {
                         }
                     }
                 },
-                returnCurrentLanType: function() {
+                returnCurrentLanType: function () {
                     return cc.sys.language == cc.sys.LANGUAGE_CHINESE ? -1 != cc.sys.languageCode.toLowerCase().indexOf("zh-cn") || -1 != cc.sys.languageCode.toLowerCase().indexOf("zh_cn") ? 1 : 2 : cc.sys.language == cc.sys.LANGUAGE_KOREAN ? 4 : 3
                 },
-                getBeatItScore: function(e, t, a) {
+                getBeatItScore: function (e, t, a) {
                     if (e > a) return 100;
                     if (e <= t) {
                         if (0 == e) return 0;
@@ -1675,14 +1681,14 @@ window.__require = function e(t, a, i) {
                     var o = 80 + (e - t) / (a - t) * 20 + this.returnRandom(-3, 3);
                     return Math.min(Math.floor(o), 99)
                 },
-                sortArrForObject: function(e, t, a) {
-                    void 0 === a && (a = !1), a ? e.sort(function(e, a) {
+                sortArrForObject: function (e, t, a) {
+                    void 0 === a && (a = !1), a ? e.sort(function (e, a) {
                         return a[t] - e[t]
-                    }) : e.sort(function(e, a) {
+                    }) : e.sort(function (e, a) {
                         return e[t] - a[t]
                     })
                 },
-                getDiffNumRandom: function(e, t, a) {
+                getDiffNumRandom: function (e, t, a) {
                     for (var i = [], o = e; o <= t; o++) i.push(o);
                     for (var n = i.length - a, s = 0; s < n; s++) {
                         var c = this.returnRandom(0, i.length - 1);
@@ -1690,12 +1696,12 @@ window.__require = function e(t, a, i) {
                     }
                     return i
                 },
-                writeJson: function(e, t) {
+                writeJson: function (e, t) {
                     if (cc.sys.isBrowser) {
                         console.log("浏览器");
                         var a = new Blob([e], {
-                                type: "application/json"
-                            }),
+                            type: "application/json"
+                        }),
                             i = document.createElement("a");
                         i.download = t, i.innerHTML = "Download File", null != window.webkitURL ? i.href = window.webkitURL.createObjectURL(a) : (i.href = window.URL.createObjectURL(a), i.onclick = destroyClickedElement, i.style.display = "none", document.body.appendChild(i)), i.click()
                     }
@@ -1705,42 +1711,42 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     UIManager: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "866bf0oenZKtoq5L6EbRayh", "UIManager");
             var a = {
                 UIDic: {},
-                OpenUI: function(e, t, a) {
+                OpenUI: function (e, t, a) {
                     var o;
                     "string" == typeof e || (e = e.name), i && i[e] && (o = i[e]), null != o ? null == this.UIDic[e] ? (1 == a && this.removeAllUI(), this.CreateUI(o, t)) : cc.error("已经打开过UI:" + e) : cc.error("未找到该UI的配置信息:" + e)
                 },
-                CloseUI: function(e, t) {
+                CloseUI: function (e, t) {
                     var a;
                     "string" == typeof e || (e = e.name), null != (a = this.UIDic[e]) ? (a.getComponent(a.config.com) && null != a.getComponent(a.config.com).closeUI ? a.getComponent(a.config.com).closeUI(t) : a.destroy(), this.UIDic[e] = null) : cc.error("已经关闭过UI:" + e)
                 },
-                GetUI: function(e) {
+                GetUI: function (e) {
                     var t = this.UIDic[e];
                     return null != t ? t : (cc.log("没有打开UI:" + e), null)
                 },
-                GetUIForJs: function(e) {
+                GetUIForJs: function (e) {
                     var t = this.UIDic[e];
                     return null != t ? t.getComponent(t.config.com) : (cc.error("没有打开UI:" + e), null)
                 },
-                CreateUI: function(e, t) {
+                CreateUI: function (e, t) {
                     var a = this;
                     if (null == this.UIDic[e.name]) {
                         var i = cc.director.getScene().getChildByName("Canvas");
-                        ToolsJs.clonePrefab(e.resUrl, i, null, function(i) {
+                        ToolsJs.clonePrefab(e.resUrl, i, null, function (i) {
                             i.config = e;
                             var o = i.getComponent(e.com);
                             null != o && null != o.openUI && o.openUI(t), a.UIDic[e.name] = i
                         }, e.zIndex)
                     }
                 },
-                removeAllUI: function() {
+                removeAllUI: function () {
                     for (var e in this.UIDic) this.CloseUI(e)
                 },
-                openTipUI: function(e, t, a, i, o, n, s, c, r) {
+                openTipUI: function (e, t, a, i, o, n, s, c, r) {
                     void 0 === t && (t = 2), void 0 === a && (a = 0), void 0 === n && (n = !1), void 0 === s && (s = 1);
                     var h = {
                         tipStr: e,
@@ -1769,26 +1775,26 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     audioTools: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "f0150VbHHtN2qKswCMoDllB", "audioTools");
             var a = {
                 bgAudio: null,
                 isPlayAudio: !0,
                 isPlayBG: !0,
-                playBG: function(e, t) {
+                playBG: function (e, t) {
                     void 0 === t && (t = .3), this.isPlayBG && this.isPlayAudio && (this.stopBG(), null != ToolsJs.AudioClipDic[e] ? this.bgAudio = cc.audioEngine.play(ToolsJs.AudioClipDic[e], !0, t) : this.bgAudio = cc.audioEngine.play(cc.url.raw("resources/music/" + e + ".mp3"), !0, t))
                 },
-                stopBG: function() {
+                stopBG: function () {
                     this.stopAudio(this.bgAudio)
                 },
-                playAudio: function(e, t, a) {
+                playAudio: function (e, t, a) {
                     if (void 0 === t && (t = .5), void 0 === a && (a = !1), this.isPlayAudio) return null != ToolsJs.AudioClipDic[e] ? cc.audioEngine.play(ToolsJs.AudioClipDic[e], a, t) : cc.audioEngine.play(cc.url.raw("resources/music/" + e + ".mp3"), a, t)
                 },
-                stopAudio: function(e) {
+                stopAudio: function (e) {
                     null != e && (cc.audioEngine.stop(e), e = null)
                 },
-                newAduioSource: function(e) {
+                newAduioSource: function (e) {
                     var t;
                     if (null != ToolsJs.AudioClipDic[e]) t = ToolsJs.AudioClipDic[e];
                     else {
@@ -1803,41 +1809,41 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     endBlackJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "10c1aPfzmNB9qwshKRmLq1A", "endBlackJS");
             var a = e("GameConfig");
             cc.Class({
                 extends: cc.Component,
                 properties: {},
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS")
                 },
-                clickEnterOverLayer: function() {
+                clickEnterOverLayer: function () {
                     if (this.node.canTouch && (this.node.canTouch = !1, a.publicGameBool || adBreak({
                         type: "next",
                         name: "restart-game"
                     }), this.mainSelf.initEndLayer(), this.mainSelf.gameOverT1.node.destroy(), this.mainSelf.gameOverT2.node.destroy(), this.mainSelf.enemyNode.children.length > 0))
                         for (var e = 0; e < this.mainSelf.enemyNode.children.length; e++) this.mainSelf.enemyNode.children[e].typeID >= this.mainSelf.maxTypeID && this.mainSelf.enemyNode.children[e].destroy()
                 },
-                start: function() {},
-                update: function() {}
+                start: function () { },
+                update: function () { }
             }), cc._RF.pop()
         }, {
             GameConfig: "GameConfig"
         }
     ],
     enemyJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "9bf97/TUWJAtJTYemvyINjL", "enemyJS"), cc.Class({
                 extends: cc.Component,
                 properties: {},
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS")
                 },
-                start: function() {},
-                onCollisionEnter: function(e, t) {
+                start: function () { },
+                onCollisionEnter: function (e, t) {
                     if (!this.mainSelf.gameOverFlags && (this.mainSelf.collision = t.node, 666 == t.tag)) {
                         if (1 == e.tag) {
                             var a = e.node.typeID;
@@ -1850,12 +1856,12 @@ window.__require = function e(t, a, i) {
                         }
                     }
                 },
-                update: function() {}
+                update: function () { }
             }), cc._RF.pop()
         }, {}
     ],
     gameOverJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "3621brbM61BsYFG7fM/74TL", "gameOverJs");
             var a = e("GameUiTools"),
@@ -1876,25 +1882,25 @@ window.__require = function e(t, a, i) {
                     mainNode: cc.Node,
                     replayBtn: cc.Node
                 },
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS"), this.canTouchReplay = !1, this.standardScore = i.standScore, this.game_max_score = 2 * this.standardScore, this.endPercent = ToolsJs.getBeatItScore(this.mainSelf.maxTypeID, i.standScore, 2 * i.standScore), this.rigthBtnGameName = null, this.rightBtnGameUrl = null, this.UIPosChange(), this.addClickBtns();
                     var e;
                     this.returnCurrentLanType();
                     this.maxScoreText.string = n, this.maxScoreText._forceUpdateRenderData(), e = this.maxScoreText.node.width;
                     var t = this.maxScoreText.node.children[0],
                         a = e + t.width * t.scale * this.maxScoreText.node.scale + 8;
-                    this.maxScoreText.node.x = a / 2 - e, this.node.opacity = 0, this.node.runAction(cc.sequence(cc.fadeIn(.3), cc.callFunc(function() {
+                    this.maxScoreText.node.x = a / 2 - e, this.node.opacity = 0, this.node.runAction(cc.sequence(cc.fadeIn(.3), cc.callFunc(function () {
                         this.canTouchReplay = !0, this.replayBtn.runAction(cc.sequence(cc.delayTime(2), cc.scaleTo(.3, .8).easing(cc.easeSineInOut()), cc.scaleTo(.3, .7).easing(cc.easeSineInOut()), cc.rotateTo(.1, 15).easing(cc.easeSineInOut()), cc.rotateTo(.2, -15).easing(cc.easeSineInOut()), cc.rotateTo(.1, 15).easing(cc.easeSineInOut()), cc.rotateTo(.2, -15).easing(cc.easeSineInOut()), cc.rotateTo(.1, 0).easing(cc.easeSineInOut()))).repeatForever()
                     }, this))), this.moreBtn.node.y = cc.winSize.height / 2 - 80;
                     var o = this.mainSelf.maxTypeID,
                         n = this.getHighScore();
                     n ? n < this.mainSelf.maxTypeID && (this.setHisSocre(this.mainSelf.maxTypeID), n = this.mainSelf.maxTypeID) : (this.setHisSocre(this.mainSelf.maxTypeID), n = o), this.typeID = n, this.endPageDisplay(), this.nametext.string = renderConfig.getStrForType("name_" + this.mainSelf.maxTypeID)
                 },
-                endPageDisplay: function() {
+                endPageDisplay: function () {
                     var e = this.mainSelf.maxTypeID;
                     this.nowFishNode.getChildByName("fish1").active = !1, this.nowFishNode.getChildByName("fish" + e).active = !0, this.maxFishNode.scaleX = .8, this.maxFishNode.scaleY = .8
                 },
-                returnCurrentLanType: function() {
+                returnCurrentLanType: function () {
                     var e = 1;
                     switch (cc.sys.language) {
                         case cc.sys.LANGUAGE_CHINESE:
@@ -1908,33 +1914,33 @@ window.__require = function e(t, a, i) {
                     }
                     return e
                 },
-                setHisSocre: function(e) {
+                setHisSocre: function (e) {
                     cc.sys.localStorage.setItem("ZhaoHuanShenLong_12WS", e)
                 },
-                getHighScore: function() {
+                getHighScore: function () {
                     return cc.sys.localStorage.getItem("ZhaoHuanShenLong_12WS")
                 },
-                UIPosChange: function() {
+                UIPosChange: function () {
                     this.overScoreT.string = i.gameScore, console.log("lang", o.langugeType);
                     var e = null,
                         t = null;
                     1 == i.curType ? (e = this.getContentByScore(i.gameScore, o.gameNameText), t = this.getContentByScore1(i.gameScore, o.gameNameText)) : 2 == i.curType ? (e = this.getContentByScore2_1(i.gameScore, o.gameNameText), t = this.getContentByScore2(i.gameScore, o.gameNameText)) : 3 == i.curType ? (e = this.getContentByScore3_1(i.gameScore, o.gameNameText), t = this.getContentByScore3(i.gameScore, o.gameNameText)) : 4 == i.curType && (e = this.getContentByScore4_1(i.gameScore, o.gameNameText), t = this.getContentByScore4(i.gameScore, o.gameNameText)), console.log("nihao", o.endHttpShowInfo), this.overInfoT.string = t, document.title = e
                 },
-                addClickBtns: function() {
+                addClickBtns: function () {
                     var e = this;
-                    e.moreBtn.node.on(cc.Node.EventType.TOUCH_START, function() {}), e.moreBtn.node.on(cc.Node.EventType.TOUCH_END, function() {
+                    e.moreBtn.node.on(cc.Node.EventType.TOUCH_START, function () { }), e.moreBtn.node.on(cc.Node.EventType.TOUCH_END, function () {
                         console.log("MoreGame"), window.location.href = o.moreGameUrl
-                    }), e.leftBtn.node.on(cc.Node.EventType.TOUCH_START, function() {}), e.leftBtn.node.on(cc.Node.EventType.TOUCH_END, function() {
+                    }), e.leftBtn.node.on(cc.Node.EventType.TOUCH_START, function () { }), e.leftBtn.node.on(cc.Node.EventType.TOUCH_END, function () {
                         e.canTouchReplay && (cc.eventManager.removeAllListeners(), i.GAME_OVER_BOOL = !0, i.gameScore = 0, i.publicGameBool || adBreak({
                             type: "next",
                             name: "restart-game"
                         }), console.log("loadScene"), a.loadingScene("MainGameScene"))
                     })
                 },
-                getPercent: function(e) {
+                getPercent: function (e) {
                     return e <= 0 ? 0 : e <= 30 ? 1 + Math.floor(3 * Math.random()) : e <= 40 ? 5 + Math.floor(10 * Math.random()) : e <= 50 ? 10 + Math.floor(10 * Math.random()) : e <= 60 ? 20 + Math.floor(15 * Math.random()) : e <= 70 ? 30 + Math.floor(15 * Math.random()) : e <= 80 ? 40 + Math.floor(20 * Math.random()) : e <= 100 ? 50 + Math.floor(30 * Math.random()) : e <= 120 ? 60 + Math.floor(30 * Math.random()) : e <= 160 ? 70 + Math.floor(25 * Math.random()) : e <= 190 ? 80 + Math.floor(19 * Math.random()) : e <= 250 ? 91 + Math.floor(9 * Math.random()) : 100
                 },
-                getContentByScore: function(e, t) {
+                getContentByScore: function (e, t) {
                     var a = "我真是太厉害，在" + t + "中竟然得了0分，全球只有1个人得0分！",
                         i = parseInt(.3 * this.standardScore),
                         o = parseInt(.5 * this.standardScore),
@@ -1943,7 +1949,7 @@ window.__require = function e(t, a, i) {
                         c = this.endPercent;
                     return e > 0 && e <= i ? a = "我在" + t + "中击败了全球" + c + "%的玩家，真是太棒了，再练练就能达到游刃有余的境界！" : e > i && e <= this.standardScore ? a = "我在" + t + "中得击败了全球" + c + "%的玩家，真是太棒了，再练练就能达到游刃有余的境界！" : e > this.standardScore && e <= o ? a = "我在" + t + "中击败了全球" + c + "%的玩家，进入了信手拈来的境界！" : e > o && e <= n ? a = "我在" + t + "中击败了全球" + c + "%的玩家，进入了运用自如的境界！" : e > n && e <= s ? a = "我在" + t + "中击败了全球" + c + "%的玩家，达到了行云流水的境界！" : e > s && e < this.game_max_score ? a = "我在" + t + "中击败了全球" + c + "%的玩家，独孤求败！" : e >= this.game_max_score && (a = "我在" + t + "中击败了全球" + c + "%的玩家，超越了独孤求败，心有灵犀！"), a
                 },
-                getContentByScore2_1: function(e, t) {
+                getContentByScore2_1: function (e, t) {
                     var a = "我真是太厲害，在" + t + "中竟然得了0分，全球只有1個人得0分！",
                         i = parseInt(.3 * this.standardScore),
                         o = parseInt(.5 * this.standardScore),
@@ -1952,7 +1958,7 @@ window.__require = function e(t, a, i) {
                         c = this.endPercent;
                     return e > 0 && e <= i ? a = "我在" + t + "中擊敗了全球" + c + "%的玩家，真是太棒了，再練練就能達到遊刃有餘的境界！" : e > i && e <= this.standardScore ? a = "我在" + t + "中擊敗了全球" + c + "%的玩家，真是太棒了，再练练就能达到游刃有余的境界！" : e > this.standardScore && e <= o ? a = "我在" + t + "中擊敗了全球" + c + "%的玩家，進入了信手拈來的境界！" : e > o && e <= n ? a = "我在" + t + "中擊敗了全球" + c + "%的玩家，進入了運用自如的境界！" : e > n && e <= s ? a = "我在" + t + "中擊敗了全球" + c + "%的玩家，達到了行雲流水的境界！" : e > s && e < this.game_max_score ? a = "我在" + t + "中擊敗了全球" + c + "%的玩家，獨孤求敗！" : e >= this.game_max_score && (a = "我在" + t + "中擊敗了全球" + c + "%的玩家，超越了獨孤求敗，心有靈犀！"), a
                 },
-                getContentByScore3_1: function(e, t) {
+                getContentByScore3_1: function (e, t) {
                     var a = "I'm awesome，in" + t + "get 0 score，only one person in the world has a 0！",
                         i = parseInt(.3 * this.standardScore),
                         o = parseInt(.5 * this.standardScore),
@@ -1961,7 +1967,7 @@ window.__require = function e(t, a, i) {
                         c = this.endPercent;
                     return e >= this.game_max_score ? a = "I got " + e + " points in the game, defeating all players worldwide, waiting for you to fight!" : e > 0 && e <= i ? a = "I got " + e + " points in the game, really great！" : e > i && e <= this.standardScore ? a = "I got " + e + " points in the game, really great！" : e > this.standardScore && e <= o ? a = "I got " + e + " points in the game , beating out " + c + "% of global players！" : e > o && e <= n ? a = "I got " + e + " points in the game , beating out " + c + "% of global players！" : e > n && e <= s ? a = "I got " + e + " points in the game , beating out 99% of global players！" : e > s && e < this.game_max_score && (a = "I got " + e + " points in the game, it said to be the world's only 10 people to reach this level! Have you?"), a
                 },
-                getContentByScore4_1: function(e) {
+                getContentByScore4_1: function (e) {
                     var t = "난 정말 대단 해, 게임 에서 무려 0 점 을 받 았 습 니 다. 전 세계 에서 1 명 만 0 점 을 받 았 습 니 다!",
                         a = parseInt(.3 * this.standardScore),
                         i = parseInt(.5 * this.standardScore),
@@ -1970,20 +1976,20 @@ window.__require = function e(t, a, i) {
                         s = this.endPercent;
                     return e > 0 && e <= a ? t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!" : e > a && e <= this.standardScore ? t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!" : e > this.standardScore && e <= i ? t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!" : e > i && e <= o ? t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!" : e > o && e <= n ? t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!" : e > n && e < this.game_max_score ? t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!" : e >= this.game_max_score && (t = "저 는 게임 에서 " + e + " 점 을 획득 하여 전 세계 " + s + "% 유 저 를 격파 하 였 습 니 다!"), t
                 },
-                getContentByScore1: function() {
+                getContentByScore1: function () {
                     return "击败了全球" + this.endPercent + "%的玩家！"
                 },
-                getContentByScore2: function() {
+                getContentByScore2: function () {
                     return "擊敗了全球" + this.endPercent + "%的玩家！"
                 },
-                getContentByScore3: function() {
+                getContentByScore3: function () {
                     return "Beat " + this.endPercent + "% of the world's players!"
                 },
-                getContentByScore4: function() {
+                getContentByScore4: function () {
                     return "전 세계" + this.endPercent + "%유 저 를 처치 하 였 습 니 다!"
                 },
-                start: function() {},
-                update: function() {}
+                start: function () { },
+                update: function () { }
             }), cc._RF.pop()
         }, {
             GameConfig: "GameConfig",
@@ -1992,59 +1998,59 @@ window.__require = function e(t, a, i) {
         }
     ],
     jianceJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "671d7/ykbxBLKzxFW4yZU5f", "jianceJS"), cc.Class({
                 extends: cc.Component,
                 properties: {},
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS")
                 },
-                start: function() {},
-                onCollisionEnter: function(e, t) {
+                start: function () { },
+                onCollisionEnter: function (e, t) {
                     if (!this.mainSelf.gameOverFlags && 2 == e.tag) {
                         var a = this.mainSelf.playerNode.typeID;
                         t.node.parent.typeID > a && this.mainSelf.ChasePlayer(t.node.parent), t.node.parent.typeID == a && this.mainSelf.EscapePlayer(t.node.parent)
                     }
                 },
-                onCollisionExit: function(e, t) {
+                onCollisionExit: function (e, t) {
                     if (2 == e.tag) {
                         var a = this.mainSelf.playerNode.typeID;
                         t.node.parent.typeID != a && (t.node.parent.stopAllActions(), this.mainSelf.enemyAction(t.node.parent))
                     }
                 },
-                update: function() {}
+                update: function () { }
             }), cc._RF.pop()
         }, {}
     ],
     leafJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "f0114pL/kNBoLIFzlmVI/1D", "leafJS"), e("../commonJs/mTool_WHQ").getRandomNum;
             var a = e("../commonJs/mTool_WHQ");
             cc.Class({
                 extends: cc.Component,
                 properties: {},
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS"), this.delay = a.getRandomNum(.5, 5, !1), this.startScaleX = this.node.scaleX, this.startScaleY = this.node.scaleY, this.random = a.getRandomNum(1, 10), this.random <= 3 && this.Action()
                 },
-                start: function() {},
-                Action: function() {
-                    this.node.runAction(cc.sequence(cc.scaleBy(.2, 1.1, 1.1), cc.scaleTo(.2, this.startScaleX, this.startScaleY), cc.scaleBy(.2, 1.1, 1.1), cc.scaleTo(.2, this.startScaleX, this.startScaleY), cc.callFunc(function() {
+                start: function () { },
+                Action: function () {
+                    this.node.runAction(cc.sequence(cc.scaleBy(.2, 1.1, 1.1), cc.scaleTo(.2, this.startScaleX, this.startScaleY), cc.scaleBy(.2, 1.1, 1.1), cc.scaleTo(.2, this.startScaleX, this.startScaleY), cc.callFunc(function () {
                         var e = this;
-                        this.scheduleOnce(function() {
+                        this.scheduleOnce(function () {
                             e.random = a.getRandomNum(1, 10), e.random <= 3 && e.Action(), e.delay = a.getRandomNum(2, 5, !1)
                         }, this.delay)
                     }, this)))
                 },
-                update: function() {}
+                update: function () { }
             }), cc._RF.pop()
         }, {
             "../commonJs/mTool_WHQ": "mTool_WHQ"
         }
     ],
     linkHttpIconJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "95474fr0oNDP7SAidILF03q", "linkHttpIconJs");
             var a = e("MainManage");
@@ -2054,7 +2060,7 @@ window.__require = function e(t, a, i) {
                     iconSpr: cc.Node,
                     iconSpr1: cc.Node
                 },
-                onLoad: function() {
+                onLoad: function () {
                     if (this._imageArr = [], this.stopUpdateBool = !0, this.gameWidth = cc.winSize.width, this.gameHeight = cc.winSize.height, null != a.recGameData && "" != a.recGameData && null != a.recGameimg1 && "" != a.recGameimg1) {
                         var e = 50 - this.gameWidth / 2,
                             t = this.gameHeight - 50 - this.gameHeight / 2;
@@ -2064,34 +2070,34 @@ window.__require = function e(t, a, i) {
                             n = this.iconSpr,
                             s = this.iconSpr1,
                             c = this;
-                        cc.loader.load(i, function(a, i) {
+                        cc.loader.load(i, function (a, i) {
                             n.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(i), c.iconSpr.opacity = 0, c.iconSpr.x = e, c.iconSpr.y = t, c._imageArr.push(c.iconSpr)
-                        }), cc.loader.load(o, function(a, i) {
+                        }), cc.loader.load(o, function (a, i) {
                             s.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(i), c.iconSpr1.opacity = 0, c.iconSpr1.x = e, c.iconSpr1.y = t, c._imageArr.push(c.iconSpr1)
                         })
                     }
                     this.addTouchEvents()
                 },
-                showLinkPic: function() {
+                showLinkPic: function () {
                     var e, t;
-                    e = null != a.recGameDelPau ? a.recGameDelPau : 6, cc.log("dMainManager.recGameDelPer", a.recGameDelPer), t = null != a.recGameDelPer ? a.recGameDelPer : .7, this._imageArr[0].opacity = 255, this._imageArr[0].runAction(cc.repeatForever(cc.sequence(cc.delayTime(e), cc.rotateBy(t, 0, 180), cc.callFunc(function() {
+                    e = null != a.recGameDelPau ? a.recGameDelPau : 6, cc.log("dMainManager.recGameDelPer", a.recGameDelPer), t = null != a.recGameDelPer ? a.recGameDelPer : .7, this._imageArr[0].opacity = 255, this._imageArr[0].runAction(cc.repeatForever(cc.sequence(cc.delayTime(e), cc.rotateBy(t, 0, 180), cc.callFunc(function () {
                         this._imageArr[0].setRotation(0), this._imageArr[0].opacity = 0, this._imageArr[1].opacity = 255
-                    }, this), cc.delayTime(e), cc.callFunc(function() {
+                    }, this), cc.delayTime(e), cc.callFunc(function () {
                         this.flowerAction(this._imageArr[1], t)
-                    }, this), cc.delayTime(t), cc.callFunc(function() {
+                    }, this), cc.delayTime(t), cc.callFunc(function () {
                         this._imageArr[1].opacity = 0, this._imageArr[0].opacity = 255
                     }, this))))
                 },
-                flowerAction: function(e, t) {
-                    e.runAction(cc.sequence(cc.rotateBy(t, 0, 180), cc.callFunc(function() {
+                flowerAction: function (e, t) {
+                    e.runAction(cc.sequence(cc.rotateBy(t, 0, 180), cc.callFunc(function () {
                         e.setRotation(0)
                     })))
                 },
-                start: function() {},
-                addTouchEvents: function() {
+                start: function () { },
+                addTouchEvents: function () {
                     cc.EventListener.TOUCH_ONE_BY_ONE
                 },
-                update: function() {
+                update: function () {
                     this.stopUpdateBool && this._imageArr.length >= 2 && (this.stopUpdateBool = !1, this.showLinkPic())
                 }
             }), cc._RF.pop()
@@ -2101,22 +2107,22 @@ window.__require = function e(t, a, i) {
         }
     ],
     loadTools: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "9ea23JPr69LB6K5CalAIXPw", "loadTools");
             var a = {
-                loadNodeSprite: function(e, t, a) {
-                    e.getComponent(cc.Sprite) ? cc.loader.loadRes(t, cc.SpriteFrame, function(t, i) {
+                loadNodeSprite: function (e, t, a) {
+                    e.getComponent(cc.Sprite) ? cc.loader.loadRes(t, cc.SpriteFrame, function (t, i) {
                         t ? cc.error(t) : (e.getComponent(cc.Sprite).spriteFrame = i, null != a && a(e))
                     }) : cc.error("node上没有Sprite组件：", e)
                 },
-                getResSpr: function(e, t) {
-                    cc.loader.loadRes(e, cc.SpriteFrame, function(e, a) {
+                getResSpr: function (e, t) {
+                    cc.loader.loadRes(e, cc.SpriteFrame, function (e, a) {
                         e ? cc.error(e) : null != t && t(a)
                     })
                 },
-                loadPrefab: function(e, t, a, i, o) {
-                    void 0 === o && (o = 0), cc.loader.loadRes(e, cc.Prefab, function(e, n) {
+                loadPrefab: function (e, t, a, i, o) {
+                    void 0 === o && (o = 0), cc.loader.loadRes(e, cc.Prefab, function (e, n) {
                         if (e) cc.error(e);
                         else {
                             var s = cc.instantiate(n);
@@ -2124,95 +2130,95 @@ window.__require = function e(t, a, i) {
                         }
                     })
                 },
-                loadScene: function(e, t) {
-                    cc.director.preloadScene(e, function() {
+                loadScene: function (e, t) {
+                    cc.director.preloadScene(e, function () {
                         cc.director.loadScene(e, t)
                     })
                 },
-                loadJson: function() {}
+                loadJson: function () { }
             };
             window.loadTools = a, cc._RF.pop()
         }, {}
     ],
     mTool_WHQ: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "fe57af2WNxE+67eFxNClrcq", "mTool_WHQ");
             var a = {
-                getRandomNum: function(e, t, a) {
+                getRandomNum: function (e, t, a) {
                     return a ? Math.floor(Math.random() * (t - e + 1) + e) : Math.random() * (t - e) + e
                 },
-                cbPosToWorldPos: function(e, t, a, i, o, n) {
+                cbPosToWorldPos: function (e, t, a, i, o, n) {
                     var s = a + (e.x - t / 2 + .5) * o,
                         c = i + (e.y + .5) * n;
                     return cc.v2(s, c)
                 },
-                worldPosToCbPos: function(e, t, a, i, o, n) {
+                worldPosToCbPos: function (e, t, a, i, o, n) {
                     var s = (e.x - a) / o - .5 + t / 2,
                         c = (e.y - i) / n - .5;
                     return s % 1 == 0 && c % 1 == 0 || (s = Math.round(s), c = Math.round(c)), cc.v2(s, c)
                 },
-                judgeInArr: function(e, t) {
+                judgeInArr: function (e, t) {
                     for (var a = 0; a < t.length; a++)
                         if (t[a] === e) return !0;
                     return !1
                 },
-                getAngleByPos: function(e, t) {
+                getAngleByPos: function (e, t) {
                     var a = t.x - e.x,
                         i = t.y - e.y;
                     return 360 * Math.atan(i / a) / (2 * Math.PI)
                 },
-                judgeIntersect: function(e, t, a, i, o, n, s, c) {
+                judgeIntersect: function (e, t, a, i, o, n, s, c) {
                     return Math.min(e, a) <= Math.max(o, s) && Math.min(n, c) <= Math.max(t, i) && Math.min(o, s) <= Math.max(e, a) && Math.min(t, i) <= Math.max(n, c) && ((o - e) * (i - t) - (a - e) * (n - t)) * ((s - e) * (i - t) - (a - e) * (c - t)) <= 1e-8 && ((e - o) * (c - n) - (s - o) * (t - n)) * ((a - o) * (c - n) - (s - o) * (i - n)) <= 1e-8
                 },
-                getNormalizeVector: function(e, t) {
+                getNormalizeVector: function (e, t) {
                     return t.sub(e).normalize()
                 },
-                judgeItemOverlapping: function(e, t, a, i, o, n, s, c) {
+                judgeItemOverlapping: function (e, t, a, i, o, n, s, c) {
                     return !(e + a < o || o + s < e || t + i < n || n + c < t)
                 },
-                getCircumferencePos: function(e, t, a) {
+                getCircumferencePos: function (e, t, a) {
                     var i = cc.v2(0, 0);
                     return i.x = e.x + Math.sin(2 * Math.PI / 360 * a) * t, i.y = e.y + Math.cos(2 * Math.PI / 360 * a) * t, i
                 },
-                upsetArr: function(e) {
-                    return e.sort(function() {
+                upsetArr: function (e) {
+                    return e.sort(function () {
                         return Math.random() > .5 ? -1 : 1
                     })
                 },
-                getAudio: function(e, t) {
+                getAudio: function (e, t) {
                     return cc.sys.os === cc.sys.OS_IOS ? e : t
                 },
-                setLocalData: function(e, t) {
+                setLocalData: function (e, t) {
                     cc.sys.localStorage.setItem(e, t)
                 },
-                getLocalData: function(e) {
+                getLocalData: function (e) {
                     return cc.sys.localStorage.getItem(e)
                 },
-                getNodePos: function(e, t, a) {
+                getNodePos: function (e, t, a) {
                     return a ? e.convertToNodeSpaceAR(t.convertToWorldSpaceAR(a)) : e.convertToNodeSpaceAR(t.convertToWorldSpaceAR())
                 },
-                judgeArrSame: function(e, t) {
+                judgeArrSame: function (e, t) {
                     for (var a = 0; a < e.length; a++)
                         for (var i = 0; i < t.length; i++)
                             if (e[a] !== t[i]) return !1;
                     return !0
                 },
-                pDistance: function(e, t) {
+                pDistance: function (e, t) {
                     return e.sub(t).mag()
                 },
-                getAngleByVector: function(e) {
+                getAngleByVector: function (e) {
                     return e.y < 0 ? 360 - cc.v2(1, 0).angle(e) / Math.PI * 180 : cc.v2(1, 0).angle(e) / Math.PI * 180
                 },
-                getBoundingBoxToNode: function(e, t) {
+                getBoundingBoxToNode: function (e, t) {
                     var a = t.convertToNodeSpaceAR(e.convertToWorldSpaceAR(cc.v2(-e.anchorX * e.width * (e.scaleX / Math.abs(e.scaleX)), -e.anchorY * e.height * (e.scaleY / Math.abs(e.scaleY)))));
                     return cc.rect(a.x, a.y, e.width * Math.abs(e.scaleX), e.height * Math.abs(e.scaleY))
                 },
-                degreesToVectors: function(e) {
+                degreesToVectors: function (e) {
                     var t = cc.misc.degreesToRadians(e);
                     return cc.v2(1, 0).rotate(-t)
                 },
-                vectorsToDegrees: function(e) {
+                vectorsToDegrees: function (e) {
                     if (Math.abs(e.x) + Math.abs(e.y) !== 0) {
                         var t = cc.v2(1, 0),
                             a = e.signAngle(t);
@@ -2225,37 +2231,37 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     player2JS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "f41fcJj045KGo2ubgiEeGaA", "player2JS"), cc.Class({
                 extends: cc.Component,
                 properties: {},
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS")
                 },
-                start: function() {},
-                onCollisionEnter: function(e, t) {
+                start: function () { },
+                onCollisionEnter: function (e, t) {
                     if (!this.mainSelf.gameOverFlags && 1 == e.tag) {
                         if (e.flags) return;
                         var a = e.node.typeID;
                         t.node.typeID >= a && (e.tag = 9999, this.mainSelf.EatSmallAction(e.node, this.mainSelf.myFish))
                     }
                 },
-                update: function() {}
+                update: function () { }
             }), cc._RF.pop()
         }, {}
     ],
     playerJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "ba7b9DpttpMLq9QsKGwuABo", "playerJS"), cc.Class({
                 extends: cc.Component,
                 properties: {},
-                onLoad: function() {
+                onLoad: function () {
                     this.mainSelf = cc.find("Canvas").getComponent("MainGameJS")
                 },
-                start: function() {},
-                onCollisionEnter: function(e, t) {
+                start: function () { },
+                onCollisionEnter: function (e, t) {
                     if (!this.mainSelf.gameOverFlags) {
                         if (this.mainSelf.collision = t.node, (t.tag = 666) && 1 == e.tag) {
                             var a = e.node.typeID;
@@ -2267,12 +2273,12 @@ window.__require = function e(t, a, i) {
                         }
                     }
                 },
-                update: function() {}
+                update: function () { }
             }), cc._RF.pop()
         }, {}
     ],
     resArr: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "d1951bUsVBEo7LtLLUajDCO", "resArr"), cc.Class({
                 extends: cc.Component,
@@ -2284,10 +2290,10 @@ window.__require = function e(t, a, i) {
                         default: []
                     }
                 },
-                onLoad: function() {
+                onLoad: function () {
                     this.addPrefabs(), this.addSpriteFrame(), this.addAudio()
                 },
-                addAudio: function() {
+                addAudio: function () {
                     this.audioClipDic = {};
                     for (var e = 0; e < this.audiosArr.length; e++)
                         if (this.audiosArr[e]) {
@@ -2296,7 +2302,7 @@ window.__require = function e(t, a, i) {
                         }
                     ToolsJs.AudioClipDic = this.audioClipDic
                 },
-                addSpriteFrame: function() {
+                addSpriteFrame: function () {
                     this.spriteArr = {};
                     for (var e = 0; e < this.SpriteFrameArr.length; e++)
                         if (this.SpriteFrameArr[e]) {
@@ -2305,7 +2311,7 @@ window.__require = function e(t, a, i) {
                         }
                     ToolsJs.SpriteFrameDic = this.spriteArr
                 },
-                addPrefabs: function() {
+                addPrefabs: function () {
                     this.prefabsArr = {};
                     for (var e = 0; e < this.PrefabArr.length; e++)
                         if (this.PrefabArr[e]) {
@@ -2318,38 +2324,38 @@ window.__require = function e(t, a, i) {
         }, {}
     ],
     rockerJS: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "132743iYdROWry4PeEjE8Fb", "rockerJS"), cc.Class({
                 extends: cc.Component,
                 properties: {
                     buttonNode: cc.Node
                 },
-                onLoad: function() {
+                onLoad: function () {
                     this.node.opacity = 0, this.mainSelf = cc.find("Canvas").getComponent("MainGameJS"), this.max_r = this.node.width / 2;
                     var e = cc.v2(0, 0);
-                    this.dir = cc.v2(0, 0), this.buttonNode.setPosition(e), this.mainSelf.node.on(cc.Node.EventType.TOUCH_END, function() {
+                    this.dir = cc.v2(0, 0), this.buttonNode.setPosition(e), this.mainSelf.node.on(cc.Node.EventType.TOUCH_END, function () {
                         this.buttonNode.setPosition(cc.v2(0, 0))
-                    }, this), this.mainSelf.node.on(cc.Node.EventType.TOUCH_CANCEL, function() {
+                    }, this), this.mainSelf.node.on(cc.Node.EventType.TOUCH_CANCEL, function () {
                         this.buttonNode.setPosition(cc.v2(0, 0))
-                    }, this), this.mainSelf.node.on(cc.Node.EventType.TOUCH_MOVE, function(e) {
+                    }, this), this.mainSelf.node.on(cc.Node.EventType.TOUCH_MOVE, function (e) {
                         var t = e.getLocation(),
                             a = this.node.convertToNodeSpaceAR(t),
                             i = a.mag();
                         this.dir.x = a.x / i, this.dir.y = a.y / i, i > this.max_r && (a.x = a.x / i * this.max_r, a.y = a.y / i * this.max_r), this.dir.mag() > .5 && i > 0 && (this.mainSelf.OffPos = this.dir), this.buttonNode.setPosition(a)
-                    }, this), this.mainSelf.node.on(cc.Node.EventType.TOUCH_START, function(e) {
+                    }, this), this.mainSelf.node.on(cc.Node.EventType.TOUCH_START, function (e) {
                         var t = e.getLocation(),
                             a = this.mainSelf.node.convertToNodeSpaceAR(t);
                         this.node.setPosition(a)
                     }, this)
                 },
-                start: function() {},
-                update: function() {}
+                start: function () { },
+                update: function () { }
             }), cc._RF.pop()
         }, {}
     ],
     startGameJs: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "280c3rsZJJKnZ9RqbALVwtK", "startGameJs"), e("GameUiTools"), e("HttpManagerJs");
             var a = e("MainManage"),
@@ -2360,12 +2366,12 @@ window.__require = function e(t, a, i) {
                     showInfoT: cc.Label,
                     startT: cc.Label
                 },
-                onLoad: function() {
-                    i.publicGameBool && a.init(), this.showInfoT.string = a.gameInfoText, this.startT.string = a.txtStartText, this.node.zIndex = 100, this.node.on("touchend", function() {
+                onLoad: function () {
+                    i.publicGameBool && a.init(), this.showInfoT.string = a.gameInfoText, this.startT.string = a.txtStartText, this.node.zIndex = 100, this.node.on("touchend", function () {
                         this.node.x = -2e3
                     }, this)
                 },
-                update: function() {}
+                update: function () { }
             }), cc._RF.pop()
         }, {
             GameConfig: "GameConfig",
@@ -2376,7 +2382,7 @@ window.__require = function e(t, a, i) {
         }
     ],
     use_reversed_rotateTo: [
-        function(e, t) {
+        function (e, t) {
             "use strict";
             cc._RF.push(t, "16142aty4ZFBpA8RBwxcagf", "use_reversed_rotateTo"), cc.RotateTo._reverse = !0, cc._RF.pop()
         }, {}
